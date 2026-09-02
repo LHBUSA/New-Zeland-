@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+<title id="title">PropData New Zealand property intelligence visual</title>
+<desc id="desc">A custom aerial-style property intelligence graphic showing New Zealand, parcel boundaries, building footprints, title relationships and data provenance.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#06111c"/><stop offset="1" stop-color="#0b2133"/></linearGradient>
+  <radialGradient id="glow"><stop stop-color="#64edbb" stop-opacity=".32"/><stop offset="1" stop-color="#64edbb" stop-opacity="0"/></radialGradient>
+  <linearGradient id="parcel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#60e6b9" stop-opacity=".36"/><stop offset="1" stop-color="#64c9ff" stop-opacity=".07"/></linearGradient>
+  <filter id="blur"><feGaussianBlur stdDeviation="36"/></filter>
+  <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#000" flood-opacity=".38"/></filter>
+  <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#b9d9e8" stroke-opacity=".05"/></pattern>
+</defs>
+<rect width="1600" height="1000" rx="48" fill="url(#bg)"/>
+<rect width="1600" height="1000" rx="48" fill="url(#grid)"/>
+<circle cx="1210" cy="260" r="330" fill="url(#glow)" filter="url(#blur)"/>
+<g opacity=".42" stroke="#18394e" stroke-width="1.4">
+  <path d="M0 760C250 650 390 720 610 610s410-80 560-180 230-190 430-150" fill="none"/>
+  <path d="M0 840C260 720 420 790 650 675s400-65 585-190 260-170 365-128" fill="none"/>
+</g>
+<g transform="translate(990 96) scale(1.18)" filter="url(#shadow)">
+  <path d="M178 9c22 10 34 31 29 52-5 20-27 26-38 43-11 17-10 38-25 53-14 14-39 15-50 32-10 16-2 35-11 50-10 17-35 19-48 34-13 15-14 36-28 50-15 15-42 14-54 32-10 16-1 35-13 49-13 15-37 10-50 24-11 12-6 30-15 43-10 14-31 16-44 8-14-9-16-29-8-42 12-20 38-18 53-35 18-20 19-49 38-67 17-17 44-18 60-35 17-18 14-48 31-66 15-16 42-16 55-36 13-19 2-43 12-63 9-19 34-30 51-24Z" fill="#0f2e2c" stroke="#69f2be" stroke-width="2.4"/>
+  <path d="M256 28c14 13 23 37 12 55-9 15-31 19-42 34-11 15-10 36-23 50-12 13-34 17-45 31-10 13-6 34-18 46-12 13-35 11-50 23-15 13-18 39-34 49-16 11-39 3-52 17-14 14-12 38-26 53-15 16-38 21-55 11" fill="none" stroke="#a2ffe1" stroke-width="1.6" stroke-dasharray="6 7" opacity=".56"/>
+  <g fill="#63efbd" stroke="#eafff7" stroke-width="1.5"><circle cx="171" cy="71" r="6"/><circle cx="127" cy="175" r="6"/><circle cx="79" cy="281" r="6"/></g>
+  <g fill="#d9fff1" font-size="11" font-family="Arial, sans-serif"><text x="187" y="67">Auckland</text><text x="141" y="171">Wellington</text><text x="8" y="278">Canterbury</text></g>
+</g>
+<g transform="translate(90 105)" filter="url(#shadow)">
+  <rect width="840" height="650" rx="30" fill="#071522" stroke="#1a4258"/>
+  <rect x="1" y="1" width="838" height="54" rx="29" fill="#0a1b2a"/>
+  <text x="28" y="34" fill="#9bc2d6" font-size="14" font-family="Arial, sans-serif" letter-spacing="2">VERIFIED PROPERTY GRAPH · LOWER HUTT</text>
+  <g transform="translate(30 82)">
+    <rect width="500" height="520" rx="22" fill="#0b2230" stroke="#183d52"/>
+    <g opacity=".55" stroke="#17374a" stroke-width="2"><path d="M0 86L500 40M0 181L500 129M0 310L500 252M0 435L500 384"/><path d="M78 0L28 520M186 0L133 520M314 0L262 520M436 0L385 520"/></g>
+    <path d="M65 84L403 50 460 135 427 416 112 460 46 345Z" fill="url(#parcel)" stroke="#64eec0" stroke-width="4" stroke-dasharray="12 8"/>
+    <path d="M171 131L341 117 382 173 362 335 190 349 145 287Z" fill="#6ee8bd" fill-opacity=".22" stroke="#a9ffe0" stroke-width="3"/>
+    <path d="M214 164L307 158 337 196 326 296 228 304 194 267Z" fill="#70bbff" fill-opacity=".38" stroke="#e7f8ff" stroke-width="2"/>
+    <circle cx="264" cy="231" r="9" fill="#6af1bd" stroke="#fff" stroke-width="3"/>
+    <line x1="264" y1="231" x2="450" y2="105" stroke="#6af1bd" stroke-width="2" stroke-dasharray="6 6"/>
+    <rect x="318" y="70" width="160" height="72" rx="12" fill="#06131e" stroke="#225064"/>
+    <text x="336" y="96" fill="#72efc2" font-size="10" font-family="monospace">PARCEL 3818618</text>
+    <text x="336" y="118" fill="#eafff8" font-size="13" font-family="Arial, sans-serif">Lot 1 DP 90132</text>
+    <g transform="translate(20 420)"><rect width="460" height="80" rx="13" fill="#06131e" stroke="#20465c"/><text x="18" y="25" fill="#7f9db2" font-size="10" font-family="monospace">TITLE GRAPH</text><g fill="#dffcf3" font-size="12" font-family="monospace"><text x="18" y="52">1006231</text><text x="120" y="52">1007115</text><text x="222" y="52">1011310</text><text x="324" y="52">+ MORE</text></g></g>
+  </g>
+  <g transform="translate(555 92)" font-family="Arial, sans-serif">
+    <text fill="#72efc2" font-size="11" letter-spacing="1.8">FULL PROPERTY CONTEXT</text>
+    <text y="42" fill="#f7fbff" font-size="26" font-weight="700">221/66 Mabey Road</text>
+    <text y="67" fill="#8da9bb" font-size="13">Avalon · Lower Hutt · Wellington</text>
+    <g transform="translate(0 108)">
+      <g><text fill="#6d8da1" font-size="10">ADDRESS ID</text><text y="25" fill="#e7f7ff" font-size="17" font-weight="700">2064090</text></g>
+      <g transform="translate(0 70)"><text fill="#6d8da1" font-size="10">PRIMARY PARCEL</text><text y="25" fill="#e7f7ff" font-size="17" font-weight="700">3818618</text></g>
+      <g transform="translate(0 140)"><text fill="#6d8da1" font-size="10">CALCULATED AREA</text><text y="25" fill="#e7f7ff" font-size="17" font-weight="700">35,805 m²</text></g>
+      <g transform="translate(0 210)"><text fill="#6d8da1" font-size="10">LAND DISTRICT</text><text y="25" fill="#e7f7ff" font-size="17" font-weight="700">Wellington</text></g>
+      <g transform="translate(0 292)"><rect width="235" height="70" rx="12" fill="#0c2c27" stroke="#235e4f"/><text x="18" y="26" fill="#6af1bd" font-size="10">SOURCE</text><text x="18" y="48" fill="#effff9" font-size="14" font-weight="700">Toitū Te Whenua LINZ</text></g>
+      <g transform="translate(0 382)"><text fill="#6d8da1" font-size="10">MATCH CONTRACT</text><text y="25" fill="#e7f7ff" font-size="13">address → parcel → titles → buildings</text></g>
+    </g>
+  </g>
+</g>
+<g transform="translate(940 690)" filter="url(#shadow)">
+  <rect width="555" height="210" rx="26" fill="#081824" stroke="#1b4156"/>
+  <text x="28" y="38" fill="#6ee8bd" font-family="monospace" font-size="11">NATIONAL PROPERTY GRAPH</text>
+  <g font-family="Arial, sans-serif">
+    <text x="28" y="88" fill="#fff" font-size="30" font-weight="700">3.04M</text><text x="28" y="111" fill="#809caf" font-size="11">PRIMARY PARCELS</text>
+    <text x="170" y="88" fill="#fff" font-size="30" font-weight="700">2.42M</text><text x="170" y="111" fill="#809caf" font-size="11">ADDRESSES</text>
+    <text x="312" y="88" fill="#fff" font-size="30" font-weight="700">2.45M</text><text x="312" y="111" fill="#809caf" font-size="11">TITLES</text>
+    <text x="428" y="88" fill="#fff" font-size="30" font-weight="700">1.79M+</text><text x="428" y="111" fill="#809caf" font-size="11">BUILDINGS LOADED</text>
+  </g>
+  <rect x="28" y="148" width="480" height="8" rx="4" fill="#102b3a"/><rect x="28" y="148" width="263" height="8" rx="4" fill="#65e7bd"/>
+  <text x="28" y="182" fill="#7694a8" font-family="Arial, sans-serif" font-size="11">Building-outline national baseline · 3,268,141 target · 54.8% loaded</text>
+</g>
+</svg>
