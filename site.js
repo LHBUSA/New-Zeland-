@@ -1,16 +1,16 @@
 const META={
   en:{
     title:'New Zealand Property Intelligence API | PropData New Zealand',
-    description:'National New Zealand property intelligence from authoritative Toitū Te Whenua LINZ data: 3.04M primary parcels, 2.42M addresses, 2.45M titles and 2.86M building outlines through one PropData API.',
+    description:'National New Zealand property intelligence from authoritative Toitū Te Whenua LINZ data: 3.04M primary parcels, 2.42M addresses, 2.45M titles and 3.27M building outlines through one PropData API.',
     ogTitle:'New Zealand Property Intelligence. One API. National Coverage.',
-    ogDescription:'3.04M primary parcels, 2.42M authoritative addresses, 2.45M property titles and 2.86M LINZ building outlines—connected through one source-aware property API.',
+    ogDescription:'3.04M primary parcels, 2.42M authoritative addresses, 2.45M property titles and 3.27M LINZ building outlines—connected through one source-aware property API.',
     locale:'en_NZ'
   },
   mi:{
     title:'Mōhiotanga Rawa o Aotearoa | PropData New Zealand',
-    description:'He mōhiotanga rawa ā-motu mō Aotearoa mai i ngā raraunga whai mana o Toitū Te Whenua LINZ: 3.04M pānga whenua matua, 2.42M wāhitau, 2.45M taitara me 2.86M tapuwae whare mā tētahi API PropData kotahi.',
+    description:'He mōhiotanga rawa ā-motu mō Aotearoa mai i ngā raraunga whai mana o Toitū Te Whenua LINZ: 3.04M pānga whenua matua, 2.42M wāhitau, 2.45M taitara me 3.27M tapuwae whare mā tētahi API PropData kotahi.',
     ogTitle:'Mōhiotanga Rawa o Aotearoa. Kotahi te API. Kapi ā-motu.',
-    ogDescription:'3.04M pānga whenua matua, 2.42M wāhitau whai mana, 2.45M taitara rawa me 2.86M tapuwae whare LINZ—kua hono ki tētahi API rawa whai-puna.',
+    ogDescription:'3.04M pānga whenua matua, 2.42M wāhitau whai mana, 2.45M taitara rawa me 3.27M tapuwae whare LINZ—kua hono ki tētahi API rawa whai-puna.',
     locale:'mi_NZ'
   }
 };
@@ -87,7 +87,7 @@ const HOME_TRANSLATIONS={
   'Coordinate resolution':'Whakataunga taunga wāhi',
   'WGS84 latitude/longitude into containing property context.':'Ahopae/ahopou WGS84 ki te horopaki rawa kei roto.',
   'Building outlines':'Ngā tapuwae whare',
-  '2,865,510 national LINZ building outlines with capture and imagery provenance preserved where published.':'2,865,510 ngā tapuwae whare LINZ ā-motu, me te takenga hopunga me te whakaahua e tiakina ana ina whakaputaina.',
+  '3,268,141 national LINZ building outlines with capture and imagery provenance preserved where published.':'3,268,141 ngā tapuwae whare LINZ ā-motu, me te takenga hopunga me te whakaahua e tiakina ana ina whakaputaina.',
   'BUILT FOR PRODUCT TEAMS':'HE MEA HANGA MŌ NGĀ RŌPŪ HUA',
   'Search, property profiles, parcel-aware workflows and product differentiation.':'Rapu, kōtaha rawa, rerengamahi mōhio-pānga-whenua me te rerekētanga hua.',
   'GIS & Mapping':'GIS me te Mahere',
@@ -174,14 +174,14 @@ function promoteBuildingBaseline(){
   if(heroBuilding){
     const value=heroBuilding.querySelector('b');
     const label=heroBuilding.querySelector('small');
-    if(value)value.textContent='2.86M';
+    if(value)value.textContent='3.27M';
     if(label){label.dataset.en='Building outlines';label.dataset.mi='Tapuwae whare';label.textContent='Building outlines';}
   }
 
   const coverageCopy=document.querySelector('.coverage-section .section-head p');
   if(coverageCopy){
-    coverageCopy.dataset.en='The national parcel, address, title, title↔parcel and building-outline baselines are complete. PropData now exposes 2,865,510 LINZ building outlines as a completed national source layer, with capture and source provenance preserved where published.';
-    coverageCopy.dataset.mi='Kua oti ngā paparanga ā-motu mō ngā pānga whenua, ngā wāhitau, ngā taitara, ngā hononga taitara↔pānga whenua me ngā tapuwae whare. Kua whakaratohia e PropData he 2,865,510 tapuwae whare LINZ hei paparanga puna ā-motu kua oti, me te takenga hopunga me te puna e tiakina ana ina whakaputaina.';
+    coverageCopy.dataset.en='The national parcel, address, title, title↔parcel and building-outline baselines are complete. PropData now exposes 3,268,141 LINZ building outlines as a completed national source layer, with capture and source provenance preserved where published.';
+    coverageCopy.dataset.mi='Kua oti ngā paparanga ā-motu mō ngā pānga whenua, ngā wāhitau, ngā taitara, ngā hononga taitara↔pānga whenua me ngā tapuwae whare. Kua whakaratohia e PropData he 3,268,141 tapuwae whare LINZ hei paparanga puna ā-motu kua oti, me te takenga hopunga me te puna e tiakina ana ina whakaputaina.';
     coverageCopy.textContent=coverageCopy.dataset.en;
   }
 
@@ -191,14 +191,13 @@ function promoteBuildingBaseline(){
     const status=block.querySelector('small');
     if(status){status.dataset.en='National building-outline baseline complete';status.dataset.mi='Kua oti te paparanga tapuwae whare ā-motu';status.textContent=status.dataset.en;}
     const nums=block.querySelector('.progress-numbers');
-    if(nums)nums.innerHTML='<b>2,865,510</b><span data-en="building outlines" data-mi="tapuwae whare">building outlines</span><i>·</i><b data-en="COMPLETE" data-mi="KUA OTI">COMPLETE</b><span data-en="national baseline" data-mi="paparanga ā-motu">national baseline</span>';
-    const bar=block.querySelector('.progress-track i');if(bar)bar.style.width='100%';
+    if(nums)nums.innerHTML='<b>3,268,141</b><span data-en="building outlines" data-mi="tapuwae whare">building outlines</span><i>·</i><b data-en="COMPLETE" data-mi="KUA OTI">COMPLETE</b><span data-en="national baseline" data-mi="paparanga ā-motu">national baseline</span>';
   }
 
   const buildingCard=document.querySelector('.data-cards article:last-child p');
   if(buildingCard){
-    buildingCard.dataset.en='2,865,510 national LINZ building outlines with capture and imagery provenance preserved where published.';
-    buildingCard.dataset.mi='2,865,510 ngā tapuwae whare LINZ ā-motu, me te takenga hopunga me te whakaahua e tiakina ana ina whakaputaina.';
+    buildingCard.dataset.en='3,268,141 national LINZ building outlines with capture and imagery provenance preserved where published.';
+    buildingCard.dataset.mi='3,268,141 ngā tapuwae whare LINZ ā-motu, me te takenga hopunga me te whakaahua e tiakina ana ina whakaputaina.';
     buildingCard.textContent=buildingCard.dataset.en;
   }
 
