@@ -1,0 +1,19 @@
+{
+  "name": "PropData New Zealand",
+  "short_name": "PropData NZ",
+  "description": "New Zealand property intelligence powered by PropData.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#04101a",
+  "theme_color": "#04101a",
+  "lang": "en-NZ",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
