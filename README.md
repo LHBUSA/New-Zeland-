@@ -18,9 +18,9 @@ Current audited PropData New Zealand infrastructure includes:
 | Authoritative addresses | **2,424,415 · national baseline complete** |
 | Property titles | **2,450,998 · national baseline complete** |
 | Title ↔ parcel associations | **2,988,279 · national baseline complete** |
-| LINZ building outlines | **3,268,141 national target · baseline actively loading** |
+| LINZ building outlines | **3,268,141 · national baseline complete** |
 
-The building-outline layer preserves source geometry plus capture metadata such as capture method, capture-source name/group, source date ranges, last-modified context and LINZ provenance where published.
+The national building-outline baseline is complete at **3,268,141 / 3,268,141** source records. Source geometry is preserved as published; null source geometry is not fabricated. The building layer also preserves capture metadata such as capture method, capture-source name/group, source date ranges, last-modified context and LINZ provenance where published.
 
 ## Property model
 
@@ -96,7 +96,7 @@ PropData is an independent product of **PropTechUSA.ai** and is not operated by 
 
 ## Commercial delivery
 
-The New Zealand product is being packaged for:
+The New Zealand product is packaged for:
 
 - REST API
 - PropData MCP workflows
