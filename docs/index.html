@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>PropData New Zealand API Documentation | Parcels, Titles & Buildings</title>
-  <meta name="description" content="Developer documentation for PropData New Zealand: authoritative addresses, primary parcels, property titles, coordinate resolution, available geometry and 3,268,141 national LINZ building outlines.">
-  <meta name="robots" content="index,follow,max-image-preview:large">
+  <title>PropData New Zealand API Docs | Property, Titles, Buildings & Statutory Intelligence</title>
+  <meta name="description" content="Production documentation for PropData New Zealand: 3.04M primary parcels, 2.42M addresses, 2.45M titles, 3.27M building outlines, 3.82M building-parcel relationships and 342,695 LINZ parcel statutory actions.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
   <meta name="theme-color" content="#04101a">
   <link rel="canonical" href="https://nz.proptechusa.ai/docs">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -15,55 +15,193 @@
   <meta property="og:locale" content="en_NZ">
   <meta property="og:site_name" content="PropData New Zealand">
   <meta property="og:title" content="PropData New Zealand API Documentation">
-  <meta property="og:description" content="Build on New Zealand's nationally complete address, parcel, title and 3.268M building-outline property graph.">
+  <meta property="og:description" content="One production contract for New Zealand property identity, parcels, titles, buildings, relationships and statutory intelligence.">
   <meta property="og:url" content="https://nz.proptechusa.ai/docs">
   <meta property="og:image" content="https://images.unsplash.com/photo-1763603341638-e1b6c3804ba9?auto=format&amp;fit=crop&amp;w=1600&amp;q=90">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"PropData New Zealand API Documentation","url":"https://nz.proptechusa.ai/docs","dateModified":"2026-09-02","author":{"@type":"Organization","name":"PropTechUSA.ai","url":"https://proptechusa.ai/"},"about":{"@type":"SoftwareApplication","name":"PropData New Zealand Property Intelligence API","applicationCategory":"DeveloperApplication","areaServed":{"@type":"Country","name":"New Zealand"}}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"PropData New Zealand API Documentation","url":"https://nz.proptechusa.ai/docs","dateModified":"2026-09-04","author":{"@type":"Organization","name":"PropTechUSA.ai","url":"https://proptechusa.ai/"},"about":{"@type":"WebAPI","name":"PropData New Zealand Property Intelligence API","areaServed":{"@type":"Country","name":"New Zealand"}}}</script>
+  <style>
+    :root{--docs-nav:260px;--docs-green:#5ee8a8;--docs-aqua:#6bdbff;--docs-night:#04101a;--docs-panel:#071925;--docs-line:#dbe4ea;--docs-ink:#102333;--docs-muted:#657887;--docs-soft:#f4f8fa;--docs-code:#06131f}
+    .docs-body{background:#fff;color:var(--docs-ink)}
+    .docs-body .site-header{position:sticky;top:0}
+    .docs-top{position:relative;overflow:hidden;padding:82px 0 68px;color:#fff;background:radial-gradient(circle at 80% 12%,rgba(94,232,168,.15),transparent 30%),radial-gradient(circle at 58% 76%,rgba(107,219,255,.11),transparent 32%),linear-gradient(135deg,#03101a,#071e2d 70%,#092b2b)}
+    .docs-top:after{content:"";position:absolute;right:-120px;bottom:-160px;width:520px;height:520px;border:1px solid rgba(94,232,168,.14);border-radius:50%;box-shadow:0 0 0 70px rgba(94,232,168,.025),0 0 0 140px rgba(94,232,168,.018)}
+    .docs-hero{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:end}
+    .docs-top h1{max-width:820px;margin:18px 0 18px;font-size:clamp(48px,6.5vw,82px);line-height:.94;letter-spacing:-.06em}
+    .docs-top h1 em{font-style:normal;color:var(--docs-green)}
+    .docs-top p{max-width:760px;margin:0;color:#b9cbd5;font-size:17px;line-height:1.75}
+    .docs-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.docs-actions a{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:0 15px;border:1px solid rgba(255,255,255,.16);border-radius:9px;color:#eff9f5;font-weight:850;font-size:11px;background:rgba(255,255,255,.04)}.docs-actions a.primary{border-color:transparent;background:linear-gradient(135deg,#58e8aa,#23b875);color:#03140c}
+    .hero-contract{border:1px solid rgba(255,255,255,.13);border-radius:16px;background:rgba(3,14,23,.7);backdrop-filter:blur(16px);overflow:hidden;box-shadow:0 28px 70px rgba(0,0,0,.27)}
+    .hero-contract-head{display:flex;justify-content:space-between;gap:16px;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.09);font:850 9px/1 var(--mono);letter-spacing:.09em;color:#8ea9b8}.hero-contract-head b{color:var(--docs-green)}
+    .hero-contract-row{display:grid;grid-template-columns:1fr auto;gap:16px;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.07)}.hero-contract-row:last-child{border-bottom:0}.hero-contract-row span{display:block;color:#7892a2;font-size:9px;text-transform:uppercase;letter-spacing:.08em}.hero-contract-row strong{display:block;margin-top:3px;color:#f0f8fb;font-size:13px}.hero-contract-row code{align-self:center;color:#78edb7;font:800 11px var(--mono)}
+    .proof-strip{background:#fff;border-bottom:1px solid #dce5ea}.proof-grid{display:grid;grid-template-columns:repeat(7,1fr)}.proof{padding:20px 14px;border-right:1px solid #e0e7eb}.proof:last-child{border-right:0}.proof b{display:block;color:#071925;font-size:20px;letter-spacing:-.04em}.proof span{display:block;margin-top:3px;color:#70818d;font:750 8px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.07em}
+    .docs-shell{display:grid;grid-template-columns:var(--docs-nav) minmax(0,1fr);gap:42px;padding:44px 0 90px}.docs-side{position:sticky;top:94px;align-self:start;max-height:calc(100vh - 114px);overflow:auto;padding:17px;border:1px solid #dce5ea;border-radius:14px;background:#fbfdfe}.docs-side b{display:block;margin:15px 9px 7px;color:#8595a1;font:900 8px/1 var(--mono);letter-spacing:.11em;text-transform:uppercase}.docs-side b:first-child{margin-top:2px}.docs-side a{display:block;padding:8px 9px;border-radius:7px;color:#536877;font-size:10px}.docs-side a:hover{background:#edf7f4;color:#08734e}.docs-side .workspace-link{margin-top:14px;border:1px solid #bde9d6;background:#effcf6;color:#08734e;font-weight:850;text-align:center}
+    .docs-main{min-width:0}.doc-section{padding:0 0 48px;margin:0 0 48px;border-bottom:1px solid #e3eaee;scroll-margin-top:100px}.doc-section:last-child{border-bottom:0}.doc-kicker{color:#11885b;font:900 9px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase}.doc-section h2{margin:9px 0 13px;font-size:clamp(30px,4vw,48px);line-height:1.04;letter-spacing:-.045em}.doc-section h3{margin:26px 0 10px;font-size:18px}.doc-section p{max-width:900px;color:#5c707e;font-size:13px;line-height:1.75}.doc-section code{font-family:var(--mono)}
+    .status-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0}.status-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border-radius:999px;border:1px solid #c9e8da;background:#effcf6;color:#0b7652;font:850 8px/1 var(--mono);letter-spacing:.06em}.status-pill:before{content:"";width:6px;height:6px;border-radius:50%;background:#32ca86}.status-pill.graph{border-color:#c9ddf4;background:#f1f7fd;color:#1e5b8b}.status-pill.graph:before{background:#65b8e5}.status-pill.restricted{border-color:#efd69f;background:#fff8e9;color:#8a5b08}.status-pill.restricted:before{background:#d59c2a}
+    .contract-map{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}.map-card{padding:17px;border:1px solid #dce6eb;border-radius:12px;background:#fff;box-shadow:0 8px 28px rgba(5,30,45,.04)}.map-card span{color:#11885b;font:900 8px var(--mono);letter-spacing:.09em}.map-card b{display:block;margin:8px 0 5px;color:#102333;font-size:13px}.map-card p{margin:0;color:#71838e;font-size:10px;line-height:1.55}
+    .quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.quick-card{padding:18px;border:1px solid #dce6eb;border-radius:12px;background:#fff}.quick-card .method{display:inline-flex;padding:5px 7px;border-radius:6px;background:#0b7652;color:#fff;font:900 8px var(--mono)}.quick-card code{display:block;margin:13px 0 9px;color:#102333;font:800 10px/1.55 var(--mono);word-break:break-word}.quick-card p{margin:0;font-size:10px}
+    .code-block{position:relative;margin:14px 0;border:1px solid #173244;border-radius:12px;background:var(--docs-code);overflow:hidden}.code-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 13px;border-bottom:1px solid rgba(255,255,255,.08);color:#7692a3;font:800 8px var(--mono);letter-spacing:.08em}.copy-code{border:1px solid rgba(255,255,255,.12);border-radius:6px;background:rgba(255,255,255,.04);color:#9cecc5;padding:6px 8px;font:850 8px var(--mono);cursor:pointer}.code-block pre{margin:0;padding:17px;overflow:auto;color:#d6e7ef;font:11px/1.75 var(--mono);white-space:pre-wrap;word-break:break-word}.code-block .g{color:#7ef0b8}.code-block .b{color:#7dd3fc}.code-block .d{color:#7992a1}
+    .endpoint-index{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0 6px}.endpoint-card{display:flex;flex-direction:column;padding:18px;border:1px solid #dce6eb;border-radius:13px;background:#fff;box-shadow:0 8px 25px rgba(4,29,43,.035)}.endpoint-card:hover{border-color:#a8d9c4;box-shadow:0 16px 38px rgba(5,40,28,.07)}.endpoint-top{display:flex;align-items:center;gap:9px}.verb{display:inline-flex;padding:6px 7px;border-radius:6px;background:#0b7652;color:#fff;font:900 8px var(--mono)}.endpoint-path{color:#0b2132;font:850 11px/1.5 var(--mono);word-break:break-word}.endpoint-card p{flex:1;margin:11px 0 12px;font-size:10px;line-height:1.6}.endpoint-meta{display:flex;gap:6px;flex-wrap:wrap}.endpoint-meta span{padding:5px 7px;border-radius:999px;background:#f2f6f8;color:#647886;font:800 8px/1 var(--mono)}
+    .endpoint-detail{margin:18px 0;border:1px solid #dce6eb;border-radius:13px;overflow:hidden}.endpoint-detail-head{display:flex;align-items:center;gap:10px;padding:13px 15px;background:#f7fafb;border-bottom:1px solid #dce6eb}.endpoint-detail-head code{font:850 12px var(--mono);color:#0a2538}.endpoint-detail-body{padding:18px}.param-table{width:100%;border-collapse:collapse;margin:13px 0 4px}.param-table th,.param-table td{padding:10px 11px;border-bottom:1px solid #e4ebef;text-align:left;vertical-align:top;font-size:10px}.param-table th{color:#6a7e8b;background:#f8fafb;font:850 8px var(--mono);text-transform:uppercase;letter-spacing:.06em}.param-table td:first-child{font-family:var(--mono);color:#15354b;font-weight:800}
+    .layer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.layer-card{padding:18px;border:1px solid #dce6eb;border-radius:12px;background:#fff}.layer-card .layer-no{color:#149064;font:900 8px var(--mono);letter-spacing:.08em}.layer-card h3{margin:9px 0 7px;font-size:15px}.layer-card p{margin:0;font-size:10px}.layer-card strong{display:block;margin-top:11px;color:#102333;font-size:18px;letter-spacing:-.03em}.layer-card small{display:block;margin-top:3px;color:#72838e;font-size:9px}
+    .legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.legal-card{padding:20px;border-radius:13px;border:1px solid #c8dfd3;background:linear-gradient(135deg,#f8fffb,#eef9f4)}.legal-card.dark{border-color:#183646;background:linear-gradient(135deg,#071925,#0a2732);color:#fff}.legal-card h3{margin:6px 0 9px}.legal-card.dark p{color:#a8beca}.legal-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:15px}.legal-stat div{padding:10px;border:1px solid rgba(40,127,90,.14);border-radius:8px;background:rgba(255,255,255,.64)}.legal-card.dark .legal-stat div{border-color:rgba(255,255,255,.09);background:rgba(255,255,255,.035)}.legal-stat b{display:block;font-size:15px}.legal-stat span{display:block;color:#6a7f8b;font-size:8px}.legal-card.dark .legal-stat span{color:#829dac}
+    .notice{margin:15px 0;padding:14px 15px;border:1px solid #b9e4d1;border-left:4px solid #24b97a;border-radius:9px;background:#f1fcf6;color:#305d4b;font-size:10px;line-height:1.65}.notice.warn{border-color:#f0d49b;border-left-color:#d69b21;background:#fff9ea;color:#6d510f}.notice.blue{border-color:#bdd9ef;border-left-color:#52a9db;background:#f2f9fd;color:#315c76}
+    .semantics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.semantic{padding:15px;border:1px solid #dce6eb;border-radius:10px;background:#fbfdfe}.semantic code{display:block;margin-bottom:6px;color:#08734e;font-weight:900}.semantic p{margin:0;font-size:10px}
+    .footer-cta{padding:30px;border:1px solid #cde3d9;border-radius:16px;background:linear-gradient(135deg,#f1fbf6,#fff)}.footer-cta h2{margin:6px 0 10px}.footer-cta-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}.footer-cta-actions a{display:inline-flex;min-height:42px;align-items:center;padding:0 14px;border:1px solid #c7d7df;border-radius:8px;font-size:10px;font-weight:850}.footer-cta-actions a.primary{border-color:#0d7551;background:#0d7551;color:#fff}
+    @media(max-width:1050px){.docs-hero{grid-template-columns:1fr}.hero-contract{max-width:720px}.proof-grid{grid-template-columns:repeat(4,1fr)}.docs-shell{grid-template-columns:1fr}.docs-side{position:static;max-height:none;display:none}.contract-map{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:720px){.docs-top{padding:58px 0 50px}.proof-grid{grid-template-columns:repeat(2,1fr)}.quick-grid,.endpoint-index,.layer-grid,.legal-grid,.semantics-grid{grid-template-columns:1fr}.param-table{display:block;overflow-x:auto}.hero-contract{display:none}.docs-shell{padding-top:30px}.doc-section{padding-bottom:34px;margin-bottom:34px}}
+  </style>
 </head>
 <body class="docs-body">
+  <a class="skip-link" href="#docs-main">Skip to documentation</a>
   <header class="site-header" id="site-header">
     <div class="wrap nav-shell">
-      <a class="brand" href="/"><img src="/favicon.svg" alt=""><span class="brand-copy"><strong>PropData</strong><small>NEW ZEALAND DOCS</small></span></a>
+      <a class="brand" href="/" aria-label="PropData New Zealand home"><img src="/favicon.svg" alt=""><span class="brand-copy"><strong>PropData</strong><small>NEW ZEALAND · API DOCS</small></span></a>
       <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-      <nav class="nav-links" id="primary-nav"><a href="/">Product</a><a href="#quickstart">Quick start</a><a href="#property">Property</a><a href="#titles">Titles</a><a href="#buildings">Buildings</a><a href="#sources">Sources</a></nav>
-      <div class="nav-actions"><a class="nav-cta" href="/#pricing">Get API Access</a></div>
+      <nav class="nav-links" id="primary-nav" aria-label="Primary navigation"><a href="/">Product</a><a href="#endpoints">Endpoints</a><a href="#graph">Property graph</a><a href="#semantics">Semantics</a><a href="/workspace">Workspace</a></nav>
+      <div class="nav-actions"><a class="nav-cta" href="/workspace">Open Workspace</a></div>
     </div>
   </header>
 
-  <section class="docs-top"><div class="wrap"><div class="eyebrow"><i></i> NEW ZEALAND · DEVELOPER DOCUMENTATION</div><h1>Build on the NZ property graph.</h1><p>Addresses, primary parcels, title relationships, coordinate resolution and source-aware geospatial intelligence through one production PropData contract.</p></div></section>
+  <section class="docs-top">
+    <div class="wrap docs-hero">
+      <div>
+        <div class="eyebrow"><i></i> PRODUCTION CONTRACT · NEW ZEALAND / AOTEAROA</div>
+        <h1>Build on the <em>national property graph.</em></h1>
+        <p>Authoritative address resolution, primary parcels, cadastral geometry, property titles, title↔parcel relationships, building footprints, building↔parcel relationships and parcel statutory intelligence—delivered through the PropData global API with New Zealand-native identifiers and provenance intact.</p>
+        <div class="docs-actions"><a class="primary" href="/workspace">Launch NZ Workspace →</a><a href="#quickstart">Quick start</a><a href="/#pricing">Get API access</a></div>
+      </div>
+      <aside class="hero-contract" aria-label="New Zealand API contract">
+        <div class="hero-contract-head"><span>COUNTRY CONTRACT</span><b>PRODUCTION</b></div>
+        <div class="hero-contract-row"><div><span>Country lock</span><strong>New Zealand / Aotearoa</strong></div><code>NZ</code></div>
+        <div class="hero-contract-row"><div><span>Primary API</span><strong>Global PropData edge contract</strong></div><code>/v1</code></div>
+        <div class="hero-contract-row"><div><span>Source backbone</span><strong>Toitū Te Whenua LINZ</strong></div><code>LINZ</code></div>
+        <div class="hero-contract-row"><div><span>Delivery</span><strong>REST · MCP · bulk · custom</strong></div><code>LIVE</code></div>
+      </aside>
+    </div>
+  </section>
 
-  <div class="wrap docs-layout">
-    <aside class="docs-nav"><b>Start</b><a href="#overview">Overview</a><a href="#quickstart">Quick start</a><a href="#auth">Authentication</a><b>Property</b><a href="#property">Address / parcel lookup</a><a href="#location">Coordinates</a><a href="#titles">Title graph</a><a href="#geometry">Parcel geometry</a><a href="#buildings">Building outlines</a><b>Platform</b><a href="#countries">Countries</a><a href="#health">Health</a><a href="#stats">Stats</a><a href="#changelog">Changelog</a><b>Contract</b><a href="#semantics">Coverage semantics</a><a href="#errors">Errors</a><a href="#sources">Sources</a></aside>
-    <main class="docs-content">
-      <section class="docs-section" id="overview"><h2>Overview</h2><p>PropData New Zealand normalizes authoritative New Zealand property-source layers into a country-aware property contract. The current national graph contains <strong>3,040,571 primary parcels</strong>, <strong>2,424,415 authoritative addresses</strong>, <strong>2,450,998 property titles</strong>, <strong>2,988,279 title↔parcel associations</strong>, and <strong>3,268,141 LINZ building outlines</strong>. All five national source baselines are complete.</p><div class="docs-code">ADDRESS → PRIMARY PARCEL → PARCEL GEOMETRY → PROPERTY TITLES → TITLE RELATIONSHIPS → BUILDING OUTLINES → PROPERTY INTELLIGENCE</div><div class="notice">The national address, parcel, title, title↔parcel and building-outline source baselines are complete. Individual property responses remain source-aware: a national source baseline being complete does not imply that every property has every optional relationship or enrichment field.</div></section>
+  <section class="proof-strip" aria-label="Production graph counts"><div class="wrap proof-grid">
+    <div class="proof"><b>3,040,571</b><span>Primary parcels</span></div>
+    <div class="proof"><b>2,424,415</b><span>Addresses</span></div>
+    <div class="proof"><b>2,450,998</b><span>Property titles</span></div>
+    <div class="proof"><b>2,988,279</b><span>Title ↔ parcel</span></div>
+    <div class="proof"><b>3,268,141</b><span>Building outlines</span></div>
+    <div class="proof"><b>3,820,845</b><span>Building ↔ parcel</span></div>
+    <div class="proof"><b>342,695</b><span>Statutory actions</span></div>
+  </div></section>
 
-      <section class="docs-section" id="quickstart"><h2>Quick start</h2><p>Use <code>country=NZ</code> on New Zealand property requests.</p><h3>Address</h3><div class="docs-code">GET /v1/property?country=NZ&amp;address=221%2F66%20Mabey%20Road%2C%20Avalon%2C%20Lower%20Hutt</div><h3>Primary parcel</h3><div class="docs-code">GET /v1/property?country=NZ&amp;parcel=3818618</div><h3>Coordinates</h3><div class="docs-code">GET /v1/property/by-location?country=NZ&amp;lat=-41.1886269490596&amp;lng=174.943031500008</div><p>The Mabey Road record is a verified production-graph canary: address ID <code>2064090</code>, primary parcel <code>3818618</code>, appellation <code>Lot 1 DP 90132</code>, Wellington land district.</p></section>
+  <div class="wrap docs-shell">
+    <aside class="docs-side" aria-label="Documentation navigation">
+      <b>Start</b><a href="#overview">Architecture</a><a href="#quickstart">Quick start</a><a href="#auth">Authentication</a>
+      <b>REST surface</b><a href="#endpoints">Endpoint index</a><a href="#property">Property</a><a href="#full-enrich">Full Enrich</a><a href="#location">Coordinates</a><a href="#platform">Platform</a>
+      <b>NZ graph</b><a href="#graph">Graph layers</a><a href="#titles">Titles</a><a href="#buildings">Buildings</a><a href="#statutory">Statutory actions</a>
+      <b>Contract</b><a href="#semantics">Coverage semantics</a><a href="#errors">Errors</a><a href="#sources">Sources & rights</a>
+      <a class="workspace-link" href="/workspace">Open NZ Workspace →</a>
+    </aside>
 
-      <section class="docs-section" id="auth"><h2>Authentication</h2><p>Direct PropData requests use an API key supplied in the <code>x-api-key</code> header. Keep direct production keys server-side.</p><div class="docs-code">curl "https://propdata-api-worker.sales-fd3.workers.dev/v1/property?country=NZ&amp;parcel=3818618" \
-  -H "x-api-key: $PROPDATA_API_KEY"</div><p>RapidAPI subscriptions use RapidAPI marketplace credentials once the New Zealand listing is promoted. Direct PropData keys and RapidAPI credentials are separate.</p></section>
+    <main class="docs-main" id="docs-main">
+      <section class="doc-section" id="overview">
+        <div class="doc-kicker">Country API architecture</div><h2>One global edge. One deep New Zealand contract.</h2>
+        <p>PropData keeps one global API surface while preserving country-native data models underneath it. New Zealand requests carry <code>country=NZ</code>; the resolver then routes into New Zealand-specific property identity, title, cadastral and physical-improvement intelligence. The country site and workspace are the focused developer experience for that market—not a separate disconnected backend.</p>
+        <div class="contract-map">
+          <article class="map-card"><span>01 · RESOLVE</span><b>Address / parcel / coordinates</b><p>Resolve the input against authoritative New Zealand identity instead of forcing a U.S. parcel convention.</p></article>
+          <article class="map-card"><span>02 · CONNECT</span><b>Parcel ↔ title ↔ building</b><p>Preserve the many-to-many title graph and spatial building relationships around the verified parcel.</p></article>
+          <article class="map-card"><span>03 · ENRICH</span><b>Country-native context</b><p>Attach available geometry, derived physical context and legal/statutory layers with independent coverage states.</p></article>
+          <article class="map-card"><span>04 · DELIVER</span><b>REST · MCP · bulk · custom</b><p>Use the same governed PropData account and provenance rules across delivery modes.</p></article>
+        </div>
+        <div class="notice blue"><strong>Blueprint:</strong> this is the country pattern moving forward—<code>global PropData API → country adapter → country website → country docs → country workspace</code>. The global product stays unified while each mature market gets a genuinely deep local developer experience.</div>
+      </section>
 
-      <section class="docs-section" id="property"><h2>Property lookup</h2><div class="endpoint"><div class="endpoint-head"><span class="method">GET</span><span class="path">/v1/property</span></div><div style="padding:16px"><p>Resolve a New Zealand property by authoritative address or primary parcel identifier.</p><table class="table"><thead><tr><th>Parameter</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>country</code></td><td>yes</td><td>Use <code>NZ</code>.</td></tr><tr><td><code>address</code></td><td>one input</td><td>Full NZ address. Use instead of <code>parcel</code>.</td></tr><tr><td><code>parcel</code></td><td>one input</td><td>LINZ primary parcel ID such as <code>3818618</code>.</td></tr></tbody></table></div></div><p>Parcel-level output can include fields such as:</p><div class="docs-code">{
-  "country_code": "NZ",
-  "match_level": "parcel_id",
-  "coverage_status": "live_enriched",
-  "parcel": {
-    "global_parcel_id": "NZ:LINZ_PARCEL:3818618",
-    "parcel_id": "3818618",
-    "appellation": "Lot 1 DP 90132",
-    "land_district": "Wellington",
-    "calc_area": 35805,
-    "survey_area": 35804,
-    "titles": ["1006231", "1007115", "1011310"],
-    "geometry": { "type": "Polygon" },
-    "bbox": [174.940499917, -41.1891889320649, 174.944342467, -41.1871139320649],
-    "source": "Toitū Te Whenua LINZ"
+      <section class="doc-section" id="quickstart">
+        <div class="doc-kicker">First request</div><h2>Three ways into one property.</h2>
+        <div class="quick-grid">
+          <article class="quick-card"><span class="method">GET</span><code>/v1/property?country=NZ&amp;parcel=3818618</code><p>Resolve an exact LINZ primary parcel identifier.</p></article>
+          <article class="quick-card"><span class="method">GET</span><code>/v1/property?country=NZ&amp;address=221%2F66%20Mabey%20Road%2C%20Avalon%2C%20Lower%20Hutt</code><p>Resolve an authoritative New Zealand address into property identity.</p></article>
+          <article class="quick-card"><span class="method">GET</span><code>/v1/property/by-location?country=NZ&amp;lat=-41.1886269490596&amp;lng=174.943031500008</code><p>Resolve a WGS84 coordinate into the containing property context.</p></article>
+        </div>
+        <div class="code-block"><div class="code-head"><span>CURL · VERIFIED MABEY ROAD CANARY</span><button class="copy-code" type="button">COPY</button></div><pre>curl "https://propdata-api-worker.sales-fd3.workers.dev/v1/property?country=NZ&amp;parcel=3818618&amp;enrich=full" \
+  -H "x-api-key: $PROPDATA_API_KEY"</pre></div>
+        <p>The production canary resolves parcel <code>3818618</code>, appellation <code>Lot 1 DP 90132</code>, Wellington land district. Examples show verified graph concepts; the returned payload remains the authority for the exact fields available to your account and route.</p>
+      </section>
+
+      <section class="doc-section" id="auth">
+        <div class="doc-kicker">Authentication</div><h2>Credentials stay server-side.</h2>
+        <p>Direct REST uses the <code>x-api-key</code> header. Production keys belong in server-side secrets or environment variables—not URLs, browser bundles, screenshots, analytics, or repositories. The NZ Workspace is an account/developer tool and only sends a key after the user explicitly connects one for the session.</p>
+        <div class="code-block"><div class="code-head"><span>ENVIRONMENT</span><button class="copy-code" type="button">COPY</button></div><pre>PROPDATA_API_KEY=pd_live_...
+PROPDATA_API_BASE=https://propdata-api-worker.sales-fd3.workers.dev</pre></div>
+        <div class="notice"><strong>MCP is different.</strong> PropData MCP uses OAuth in compatible clients. Do not paste a static REST API key into an MCP authorization flow.</div>
+      </section>
+
+      <section class="doc-section" id="endpoints">
+        <div class="doc-kicker">Customer-safe REST surface</div><h2>The routes New Zealand developers actually need.</h2>
+        <p>These are the public PropData routes used by the country experience. Internal database RPCs, ingest functions, checkpoints, source tables and service-role operations are intentionally not public API endpoints.</p>
+        <div class="endpoint-index">
+          <article class="endpoint-card"><div class="endpoint-top"><span class="verb">GET</span><code class="endpoint-path">/v1/property</code></div><p>Primary property resolver for NZ address or parcel input. Add <code>enrich=full</code> for deeper country-aware enrichment where entitled.</p><div class="endpoint-meta"><span>AUTH</span><span>NZ</span><span>IDENTITY</span></div></article>
+          <article class="endpoint-card"><div class="endpoint-top"><span class="verb">GET</span><code class="endpoint-path">/v1/property/by-location</code></div><p>WGS84 coordinate → parcel/property context with explicit spatial match semantics.</p><div class="endpoint-meta"><span>AUTH</span><span>NZ</span><span>SPATIAL</span></div></article>
+          <article class="endpoint-card"><div class="endpoint-top"><span class="verb">GET</span><code class="endpoint-path">/v1/property/by-location/coverage-check</code></div><p>Probe coordinate coverage before relying on a property-by-location workflow.</p><div class="endpoint-meta"><span>AUTH</span><span>COVERAGE</span></div></article>
+          <article class="endpoint-card"><div class="endpoint-top"><span class="verb">GET</span><code class="endpoint-path">/v1/countries</code></div><p>Discover the country-aware framework and supported market capabilities.</p><div class="endpoint-meta"><span>GLOBAL</span><span>CAPABILITIES</span></div></article>
+          <article class="endpoint-card"><div class="endpoint-top"><span class="verb">GET</span><code class="endpoint-path">/v1/auth/usage</code></div><p>Authoritative account usage and current limits for quota-aware applications.</p><div class="endpoint-meta"><span>AUTH</span><span>ACCOUNT</span></div></article>
+          <article class="endpoint-card"><div class="endpoint-top"><span class="verb">GET</span><code class="endpoint-path">/v1/health</code></div><p>Public production service health for operational checks.</p><div class="endpoint-meta"><span>PUBLIC</span><span>OPS</span></div></article>
+          <article class="endpoint-card"><div class="endpoint-top"><span class="verb">GET</span><code class="endpoint-path">/v1/stats</code></div><p>Public platform-level proof and service statistics. Do not substitute global stats for property-level coverage.</p><div class="endpoint-meta"><span>PUBLIC</span><span>OPS</span></div></article>
+          <article class="endpoint-card"><div class="endpoint-top"><span class="verb">GET</span><code class="endpoint-path">/v1/changelog</code></div><p>Production API and data-platform changes for integration teams.</p><div class="endpoint-meta"><span>PUBLIC</span><span>RELEASES</span></div></article>
+        </div>
+      </section>
+
+      <section class="doc-section" id="property">
+        <div class="doc-kicker">Property identity</div><h2><code>GET /v1/property</code></h2>
+        <div class="status-line"><span class="status-pill">PRODUCTION</span><span class="status-pill graph">COUNTRY-AWARE</span></div>
+        <p>Resolve a New Zealand property by authoritative address or LINZ primary parcel identifier. Use one clear identity method per request.</p>
+        <div class="endpoint-detail"><div class="endpoint-detail-head"><span class="verb">GET</span><code>/v1/property</code></div><div class="endpoint-detail-body"><table class="param-table"><thead><tr><th>Parameter</th><th>Required</th><th>Purpose</th></tr></thead><tbody><tr><td>country</td><td>yes</td><td>Use <code>NZ</code>.</td></tr><tr><td>address</td><td>one input</td><td>New Zealand address to resolve. Do not combine with a conflicting parcel ID.</td></tr><tr><td>parcel</td><td>one input</td><td>LINZ primary parcel ID such as <code>3818618</code>.</td></tr><tr><td>enrich</td><td>optional</td><td>Use <code>full</code> for deeper country enrichment where available to the account.</td></tr></tbody></table></div></div>
+        <div class="code-block"><div class="code-head"><span>ILLUSTRATIVE RESPONSE ENVELOPE</span><button class="copy-code" type="button">COPY</button></div><pre>{
+  <span class="b">"country_code"</span>: <span class="g">"NZ"</span>,
+  <span class="b">"match_level"</span>: <span class="g">"parcel_id"</span>,
+  <span class="b">"coverage_status"</span>: <span class="g">"live_enriched"</span>,
+  <span class="b">"property"</span>: {
+    <span class="d">"..."</span>: <span class="g">"route-supported NZ fields"</span>
   }
-}</div><div class="notice warn">The example documents verified fields from the normalized graph. Exact response size and title truncation are implementation-dependent; read count/truncation metadata when provided rather than assuming an unbounded title array.</div></section>
+}</pre></div>
+        <div class="notice"><strong>Fail-open enrichment, fail-closed facts.</strong> A valid property result should survive an optional layer failure. Missing or unavailable downstream facts remain unavailable; PropData does not invent a substitute.</div>
+      </section>
 
-      <section class="docs-section" id="location"><h2>Coordinates → property</h2><div class="endpoint"><div class="endpoint-head"><span class="method">GET</span><span class="path">/v1/property/by-location</span></div><div style="padding:16px"><table class="table"><thead><tr><th>Parameter</th><th>Required</th><th>Description</th></tr></thead><tbody><tr><td><code>country</code></td><td>yes</td><td><code>NZ</code></td></tr><tr><td><code>lat</code></td><td>yes</td><td>WGS84 latitude.</td></tr><tr><td><code>lng</code></td><td>yes</td><td>WGS84 longitude.</td></tr></tbody></table></div></div><div class="docs-code">GET /v1/property/by-location?country=NZ&amp;lat=-41.1886269490596&amp;lng=174.943031500008</div><p>Coordinate resolution is designed to attach spatial property context without pretending that every point maps to an exact address string.</p></section>
+      <section class="doc-section" id="full-enrich">
+        <div class="doc-kicker">Deep country response</div><h2>Full Enrich connects the graph.</h2>
+        <div class="status-line"><span class="status-pill">PRODUCTION</span><span class="status-pill graph">LAYER-SPECIFIC</span></div>
+        <p>New Zealand Full Enrich is backed by the same canonical parcel and title identity used by the base resolver, plus country enrichment that can include building relationships and derived physical context. Response exposure is route-, plan- and entitlement-specific.</p>
+        <div class="code-block"><div class="code-head"><span>REQUEST</span><button class="copy-code" type="button">COPY</button></div><pre>GET /v1/property?country=NZ&amp;parcel=3818618&amp;enrich=full</pre></div>
+        <div class="layer-grid">
+          <article class="layer-card"><span class="layer-no">IDENTITY</span><h3>Parcel + cadastral context</h3><p>Native parcel ID, appellation, land district, area, topology and available geometry.</p></article>
+          <article class="layer-card"><span class="layer-no">LEGAL IDENTITY</span><h3>Title graph</h3><p>Property titles plus explicit title↔parcel associations, including multi-title and unit-title contexts.</p></article>
+          <article class="layer-card"><span class="layer-no">PHYSICAL</span><h3>Building relationships</h3><p>National building outlines spatially linked to parcels with relationship method, overlap and provenance.</p></article>
+        </div>
+      </section>
 
-      <section class="docs-section" id="titles"><h2>Property title graph</h2><p>The title layer is not a scraped ownership blob. PropData maintains national title records and explicit title↔parcel associations from LINZ.</p><table class="table"><thead><tr><th>Layer</th><th>Rows</th><th>Status</th></tr></thead><tbody><tr><td>Property titles</td><td>2,450,998</td><td>National baseline complete</td></tr><tr><td>Title↔parcel associations</td><td>2,988,279</td><td>National baseline complete</td></tr><tr><td>Building outlines</td><td>3,268,141</td><td>National baseline complete</td></tr></tbody></table><p>Verified title records attached to the Mabey Road parcel include fields such as:</p><div class="docs-code">{
+      <section class="doc-section" id="location">
+        <div class="doc-kicker">Spatial identity</div><h2>Coordinates → property.</h2>
+        <div class="endpoint-detail"><div class="endpoint-detail-head"><span class="verb">GET</span><code>/v1/property/by-location</code></div><div class="endpoint-detail-body"><table class="param-table"><thead><tr><th>Parameter</th><th>Required</th><th>Purpose</th></tr></thead><tbody><tr><td>country</td><td>yes</td><td><code>NZ</code></td></tr><tr><td>lat</td><td>yes</td><td>WGS84 latitude.</td></tr><tr><td>lng</td><td>yes</td><td>WGS84 longitude.</td></tr></tbody></table></div></div>
+        <div class="code-block"><div class="code-head"><span>MABEY ROAD COORDINATE CANARY</span><button class="copy-code" type="button">COPY</button></div><pre>GET /v1/property/by-location?country=NZ&amp;lat=-41.1886269490596&amp;lng=174.943031500008</pre></div>
+        <p>Coordinate resolution attaches spatial property context without pretending every point has an exact address record. Use the returned match and coverage signals independently.</p>
+        <h3>Coverage probe</h3><div class="code-block"><div class="code-head"><span>PRE-FLIGHT</span><button class="copy-code" type="button">COPY</button></div><pre>GET /v1/property/by-location/coverage-check?country=NZ&amp;lat=-41.1886269490596&amp;lng=174.943031500008</pre></div>
+      </section>
+
+      <section class="doc-section" id="graph">
+        <div class="doc-kicker">Production country graph</div><h2>Seven national layers, one property identity.</h2>
+        <p>The backend is deliberately richer than a single endpoint table. These are production graph capabilities currently loaded for New Zealand; direct REST exposure remains governed by the public contract above.</p>
+        <div class="layer-grid">
+          <article class="layer-card"><span class="layer-no">01</span><h3>Authoritative addresses</h3><p>LINZ address identity, locality structure, lifecycle and coordinates.</p><strong>2,424,415</strong><small>baseline complete</small></article>
+          <article class="layer-card"><span class="layer-no">02</span><h3>Primary parcels</h3><p>Parcel identity, cadastral attributes and available geometry.</p><strong>3,040,571</strong><small>baseline complete</small></article>
+          <article class="layer-card"><span class="layer-no">03</span><h3>Property titles</h3><p>Title status, type, dates, estate description and source context.</p><strong>2,450,998</strong><small>baseline complete</small></article>
+          <article class="layer-card"><span class="layer-no">04</span><h3>Title ↔ parcel</h3><p>Explicit many-to-many associations between legal title identity and cadastral parcels.</p><strong>2,988,279</strong><small>baseline complete</small></article>
+          <article class="layer-card"><span class="layer-no">05</span><h3>Building outlines</h3><p>LINZ footprints with capture and imagery provenance where published.</p><strong>3,268,141</strong><small>baseline complete</small></article>
+          <article class="layer-card"><span class="layer-no">06</span><h3>Building ↔ parcel</h3><p>Derived spatial relationships using overlap geometry and New Zealand metric CRS handling.</p><strong>3,820,845</strong><small>relationship graph complete</small></article>
+          <article class="layer-card"><span class="layer-no">07</span><h3>Parcel statutory actions</h3><p>Current and historic LINZ/Landonline parcel actions normalized into legal/statutory intelligence.</p><strong>342,695</strong><small>baseline complete · automated refresh</small></article>
+        </div>
+      </section>
+
+      <section class="doc-section" id="titles">
+        <div class="doc-kicker">Legal property identity</div><h2>Titles stay relational.</h2>
+        <p>PropData does not flatten New Zealand title identity into a single fake owner field. The graph preserves title records and title↔parcel associations separately so multi-title, unit-title and shared-spatial contexts remain structurally correct.</p>
+        <div class="code-block"><div class="code-head"><span>VERIFIED TITLE-SHAPE EXAMPLE</span><button class="copy-code" type="button">COPY</button></div><pre>{
   "title_no": "1006231",
   "status": "LIVE",
   "title_type": "Unit Title",
@@ -74,37 +212,88 @@
   "number_owners": 1,
   "spatial_extents_shared": true,
   "source": "Toitū Te Whenua LINZ"
-}</div><div class="notice"><strong>Title metadata is not the same as named-owner identity.</strong> PropData does not infer or fabricate named ownership from title numbers, title types or <code>number_owners</code>.</div></section>
+}</pre></div>
+        <div class="notice warn"><strong>Named ownership is a separate entitlement problem.</strong> Title metadata and <code>number_owners</code> do not authorize inference of named owner identity. LINZ Personal Data Licence-gated datasets, including the Title Memorial List, remain separately controlled.</div>
+      </section>
 
-      <section class="docs-section" id="geometry"><h2>Parcel geometry</h2><p>Primary parcel records can carry GeoJSON-compatible polygon geometry, bounding box and area context. Useful parcel fields can include <code>geometry</code>, <code>bbox</code>, <code>centroid</code>, <code>calc_area</code>, <code>survey_area</code>, <code>topology_type</code>, <code>parcel_intent</code>, <code>statutory_actions</code> and <code>affected_surveys</code> where the source supports them.</p></section>
+      <section class="doc-section" id="buildings">
+        <div class="doc-kicker">Physical property graph</div><h2>Buildings are linked, not merely nearby.</h2>
+        <p>The national building-outline source baseline contains <strong>3,268,141</strong> records. PropData then builds a separate relationship graph with <strong>3,820,845</strong> building↔parcel links. The relationship model preserves method, confidence basis, overlap area, overlap ratio, metric CRS and geometry-repair provenance where applicable.</p>
+        <div class="code-block"><div class="code-head"><span>FULL-ENRICH CONCEPT</span><button class="copy-code" type="button">COPY</button></div><pre>"new_zealand": {
+  "building_relationships": {
+    "coverage_status": "complete",
+    "count": 2,
+    "returned": 2,
+    "truncated": false,
+    "items": [ ... ]
+  },
+  "derived": {
+    "building_count": 2,
+    "primary_building_count": 1,
+    "building_overlap_area_ratio": 0.1842
+  }
+}</pre></div>
+        <div class="notice">A complete national building source does not mean every parcel contains a building. A zero relationship count is different from unavailable linkage coverage; read the returned coverage state.</div>
+      </section>
 
-      <section class="docs-section" id="buildings"><h2>LINZ building outlines</h2><p>The national LINZ building-outline baseline is complete at <strong>3,268,141 / 3,268,141 source records</strong>. Source geometry is preserved as published; missing source geometry is not fabricated. Property-level building relationships remain explicitly coverage-aware because a completed national source baseline and a successfully linked building relationship are different facts.</p><p>Published source metadata can include:</p><div class="docs-code">{
-  "building_id": 1593810,
-  "building_use": "Unknown",
-  "capture_method": "Feature Extraction",
-  "capture_source_name": "Otago 0.3m Rural Aerial Photos (2019-2021)",
-  "capture_source_group": "NZ Aerial Imagery",
-  "capture_source_from": "2019-02-07",
-  "capture_source_to": "2021-02-24",
-  "territorial_authority": "Clutha District",
-  "source_layer": "NZ Building Outlines",
-  "source": "Toitū Te Whenua LINZ"
-}</div><div class="notice"><strong>National source baseline: complete.</strong> Full Enrich still reports the actual building relationship and coverage state for each resolved property rather than inferring a relationship from national availability.</div></section>
+      <section class="doc-section" id="statutory">
+        <div class="doc-kicker">Legal / statutory intelligence</div><h2>Parcel actions now have their own production layer.</h2>
+        <div class="legal-grid">
+          <article class="legal-card"><div class="status-line"><span class="status-pill">PRODUCTION GRAPH</span></div><h3>342,695 normalized statutory actions</h3><p>LINZ dataset 51565 is loaded nationally and refreshed through a bounded, resumable changeset workflow. Records remain attached to source parcel identity rather than being turned into vague property flags.</p><div class="legal-stat"><div><b>287,865</b><span>Current</span></div><div><b>54,830</b><span>Historic</span></div><div><b>Hourly</b><span>Refresh cadence</span></div></div></article>
+          <article class="legal-card dark"><div class="status-line"><span class="status-pill graph">SAFE SUMMARY</span></div><h3>Current vs historic, by action type</h3><p>The country graph can summarize total/current/historic actions and create/extinguished/referenced counts, returning a bounded set of source-aware items without exposing raw ingest payloads.</p><div class="legal-stat"><div><b>197,039</b><span>Create</span></div><div><b>33,816</b><span>Extinguished</span></div><div><b>111,840</b><span>Referenced</span></div></div></article>
+        </div>
+        <div class="notice blue"><strong>Exposure note:</strong> statutory actions are a certified production graph layer. Standard public response exposure is still route-, plan- and entitlement-specific; this documentation does not invent a standalone public route that the edge API has not promoted.</div>
+      </section>
 
-      <section class="docs-section" id="countries"><h2>Country capabilities</h2><div class="endpoint"><div class="endpoint-head"><span class="method">GET</span><span class="path">/v1/countries</span></div></div><p>Returns the country-aware PropData framework and capability context across supported markets. Layer availability remains country-specific.</p></section>
-      <section class="docs-section" id="health"><h2>Health</h2><div class="endpoint"><div class="endpoint-head"><span class="method">GET</span><span class="path">/v1/health</span></div></div><p>Public production service health.</p></section>
-      <section class="docs-section" id="stats"><h2>Platform statistics</h2><div class="endpoint"><div class="endpoint-head"><span class="method">GET</span><span class="path">/v1/stats</span></div></div><p>Public platform proof points. Do not use global statistics as a substitute for coverage fields on an individual property response.</p></section>
-      <section class="docs-section" id="changelog"><h2>Changelog</h2><div class="endpoint"><div class="endpoint-head"><span class="method">GET</span><span class="path">/v1/changelog</span></div></div><p>Production API and data-platform changes.</p></section>
+      <section class="doc-section" id="platform">
+        <div class="doc-kicker">Global platform routes</div><h2>Country product, global control plane.</h2>
+        <div class="endpoint-detail"><div class="endpoint-detail-head"><span class="verb">GET</span><code>/v1/countries</code></div><div class="endpoint-detail-body"><p>Country-aware capabilities and market context across the PropData network.</p></div></div>
+        <div class="endpoint-detail"><div class="endpoint-detail-head"><span class="verb">GET</span><code>/v1/auth/usage</code></div><div class="endpoint-detail-body"><p>Authoritative account usage and limits. Build quota-aware backoff from this route and returned rate-limit headers.</p></div></div>
+        <div class="endpoint-detail"><div class="endpoint-detail-head"><span class="verb">GET</span><code>/v1/health</code></div><div class="endpoint-detail-body"><p>Public service health. Suitable for operational checks, not for property-specific coverage conclusions.</p></div></div>
+        <div class="endpoint-detail"><div class="endpoint-detail-head"><span class="verb">GET</span><code>/v1/stats</code></div><div class="endpoint-detail-body"><p>Public platform statistics and proof points.</p></div></div>
+        <div class="endpoint-detail"><div class="endpoint-detail-head"><span class="verb">GET</span><code>/v1/changelog</code></div><div class="endpoint-detail-body"><p>Production platform and data changes for integration teams.</p></div></div>
+      </section>
 
-      <section class="docs-section" id="semantics"><h2>Match & coverage semantics</h2><p>PropData is intentionally fail-closed. A property response can distinguish successful identity resolution from downstream layer availability.</p><table class="table"><thead><tr><th>Signal</th><th>Purpose</th></tr></thead><tbody><tr><td><code>match_level</code></td><td>How the input resolved, such as address, parcel or coordinate.</td></tr><tr><td><code>coverage_status</code></td><td>Explicit source/layer coverage state.</td></tr><tr><td><code>parcel_resolution</code></td><td>Whether an address or location attached to parcel identity.</td></tr><tr><td>source identifiers</td><td>Preserve LINZ-native IDs and PropData canonical IDs.</td></tr><tr><td>provenance</td><td>Keep authoritative-source context visible after normalization.</td></tr></tbody></table><div class="notice"><strong>If a source does not verify a fact, PropData does not manufacture it.</strong> Missing geometry, missing title data, no building relationship and no property match are different states and should be handled differently.</div></section>
+      <section class="doc-section" id="semantics">
+        <div class="doc-kicker">Do not guess</div><h2>Match, coverage and provenance are separate signals.</h2>
+        <div class="semantics-grid">
+          <article class="semantic"><code>match_level</code><p>How the input resolved: address, parcel, coordinate or another explicit identity method.</p></article>
+          <article class="semantic"><code>coverage_status</code><p>Whether the requested source/layer is available for the resolved context.</p></article>
+          <article class="semantic"><code>parcel_resolution</code><p>Whether an address or coordinate successfully attached to parcel identity.</p></article>
+          <article class="semantic"><code>source / provenance</code><p>Where the fact originated and how a derived relationship was produced.</p></article>
+          <article class="semantic"><code>count / returned / truncated</code><p>Distinguish total matches from bounded response items.</p></article>
+          <article class="semantic"><code>null / unavailable</code><p>Missing source truth remains missing. PropData does not convert absence into a favorable claim.</p></article>
+        </div>
+        <div class="notice"><strong>Core contract rule:</strong> base identity success and enrichment availability are not the same thing. Treat optional country layers independently so a missing enrichment never corrupts a valid property match.</div>
+      </section>
 
-      <section class="docs-section" id="errors"><h2>Errors & retries</h2><table class="table"><thead><tr><th>Status</th><th>Meaning</th><th>Recommended behavior</th></tr></thead><tbody><tr><td>400</td><td>Invalid request</td><td>Correct parameters before retrying.</td></tr><tr><td>401</td><td>Authentication failed</td><td>Check credentials.</td></tr><tr><td>404</td><td>No matching resource</td><td>Treat as a resolution outcome.</td></tr><tr><td>429</td><td>Rate/quota exceeded</td><td>Honor retry and plan limits.</td></tr><tr><td>5xx</td><td>Server/upstream failure</td><td>Retry with bounded exponential backoff.</td></tr></tbody></table></section>
+      <section class="doc-section" id="errors">
+        <div class="doc-kicker">Operational behavior</div><h2>Handle failures by category.</h2>
+        <table class="param-table"><thead><tr><th>Status</th><th>Meaning</th><th>Recommended behavior</th></tr></thead><tbody><tr><td>400</td><td>Validation / invalid request</td><td>Correct parameters before retrying.</td></tr><tr><td>401</td><td>Authentication failed</td><td>Check the server-side credential and account status.</td></tr><tr><td>403</td><td>Entitlement / access restriction</td><td>Do not retry blindly; verify plan or restricted-layer entitlement.</td></tr><tr><td>404</td><td>Route or supported resource not found</td><td>Distinguish route mismatch from a property <code>no_match</code> response.</td></tr><tr><td>429</td><td>Rate limit</td><td>Use backoff and authoritative usage/rate-limit signals.</td></tr><tr><td>5xx</td><td>Transient service/upstream failure</td><td>Retry conservatively; preserve a successful base property response if only an optional enrichment failed.</td></tr></tbody></table>
+      </section>
 
-      <section class="docs-section" id="sources"><h2>Sources & attribution</h2><p>Core New Zealand property layers are sourced from <strong>Toitū Te Whenua Land Information New Zealand (LINZ)</strong>. PropData maintains the ingestion, normalization, canonical identity, relationship graph, spatial processing, coverage semantics and production delivery above those source systems.</p><p>The LINZ building-outline layer is attributed under its published open-data terms. PropData preserves source attribution and capture provenance in the normalized layer where available.</p><p><strong>PropData is an independent product of PropTechUSA.ai and is not operated by or affiliated with LINZ or the New Zealand government.</strong></p><p>See the <a href="/#pricing"><strong>New Zealand pricing and subscription plans</strong></a> for direct API access, or contact <a href="mailto:sales@proptechusa.ai">sales@proptechusa.ai</a> for bulk, white-label and enterprise delivery.</p></section>
+      <section class="doc-section" id="sources">
+        <div class="doc-kicker">Source and rights transparency</div><h2>Authoritative sources in. Governed delivery out.</h2>
+        <p>Core New Zealand property layers are sourced from Toitū Te Whenua Land Information New Zealand (LINZ). PropData operates the ingestion, normalization, canonical identity, spatial processing, relationship graph, refresh automation, coverage semantics and production delivery above those source systems.</p>
+        <div class="status-line"><span class="status-pill">LINZ SOURCE-AWARE</span><span class="status-pill graph">PROPDATA NORMALIZED</span><span class="status-pill restricted">PERSONAL DATA ENTITLEMENTS SEPARATE</span></div>
+        <div class="notice warn"><strong>Title Memorial List / personal data:</strong> restricted LINZ personal-data datasets remain separately entitlement-gated. PropData does not represent those layers as generally available unless the applicable LINZ licence and downstream controls are in place.</div>
+        <p>PropData is an independent product of PropTechUSA.ai and is not operated by or affiliated with LINZ or the New Zealand government.</p>
+      </section>
+
+      <section class="footer-cta">
+        <div class="doc-kicker">Country workspace</div><h2>Test the New Zealand contract without leaving the country product.</h2><p>The NZ Workspace is the operating surface for request testing, country coverage, live response inspection, account usage and developer handoff. It is intentionally modeled after the global PropData Workspace while keeping the experience locked to New Zealand.</p>
+        <div class="footer-cta-actions"><a class="primary" href="/workspace">Open NZ Workspace →</a><a href="/">Back to product</a><a href="/#pricing">View NZ pricing</a><a href="https://propdata.proptechusa.ai/dashboard">Global PropData Workspace</a></div>
+      </section>
     </main>
   </div>
 
-  <footer class="site-footer"><div class="wrap"><div class="footer-bottom"><span>© 2026 PropTechUSA.ai · PropData New Zealand</span><span><a href="/">Product</a> · <a href="/#pricing">Pricing</a> · <a href="https://global.proptechusa.ai/">Global</a> · <a href="https://propdata.proptechusa.ai/">PropData</a></span><span>sales@proptechusa.ai</span></div></div></footer>
   <script src="/site.js" defer></script>
+  <script>
+    document.addEventListener('click',function(e){
+      var btn=e.target.closest('.copy-code');if(!btn)return;
+      var pre=btn.closest('.code-block').querySelector('pre');if(!pre)return;
+      navigator.clipboard.writeText(pre.innerText).then(function(){var old=btn.textContent;btn.textContent='COPIED';setTimeout(function(){btn.textContent=old},1200)});
+    });
+  </script>
 </body>
 </html>
