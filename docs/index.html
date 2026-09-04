@@ -8,6 +8,9 @@
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
   <meta name="theme-color" content="#04101a">
   <link rel="canonical" href="https://nz.proptechusa.ai/docs">
+  <link rel="alternate" hreflang="en-NZ" href="https://nz.proptechusa.ai/docs?lang=en">
+  <link rel="alternate" hreflang="mi-NZ" href="https://nz.proptechusa.ai/docs?lang=mi">
+  <link rel="alternate" hreflang="x-default" href="https://nz.proptechusa.ai/docs">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/site.css">
@@ -59,7 +62,7 @@
       <a class="brand" href="/" aria-label="PropData New Zealand home"><img src="/favicon.svg" alt=""><span class="brand-copy"><strong>PropData</strong><small>NEW ZEALAND · API DOCS</small></span></a>
       <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
       <nav class="nav-links" id="primary-nav" aria-label="Primary navigation"><a href="/">Product</a><a href="#endpoints">Endpoints</a><a href="#graph">Property graph</a><a href="#semantics">Semantics</a><a href="/workspace">Workspace</a></nav>
-      <div class="nav-actions"><a class="nav-cta" href="/workspace">Open Workspace</a></div>
+      <div class="nav-actions"><div class="lang-switch" aria-label="Language / Reo"><button class="lang-btn active" type="button" data-lang="en" aria-pressed="true">EN</button><button class="lang-btn" type="button" data-lang="mi" aria-pressed="false">MI</button></div><a class="nav-cta" href="/workspace">Open Workspace</a></div>
     </div>
   </header>
 
@@ -137,7 +140,7 @@ PROPDATA_API_BASE=https://propdata-api-worker.sales-fd3.workers.dev</pre></div>
         <div class="doc-kicker">Customer-safe REST surface</div><h2>The routes New Zealand developers actually need.</h2>
         <p>These are the public PropData routes used by the country experience. Internal database RPCs, ingest functions, checkpoints, source tables and service-role operations are intentionally not public API endpoints.</p>
         <div class="endpoint-index">
-          <article class="endpoint-card"><div class="endpoint-top"><span class="verb">GET</span><code class="endpoint-path">/v1/property</code></div><p>Primary property resolver for NZ address or parcel input. Add <code>enrich=full</code> for deeper country-aware enrichment where entitled.</p><div class="endpoint-meta"><span>AUTH</span><span>NZ</span><span>IDENTITY</span></div></article>
+          <article class="endpoint-card"><div class="endpoint-top"><span class="verb">GET</span><code class="endpoint-path">/v1/property</code></div><p>Primary property resolver for NZ address or parcel input. The NZ property contract returns country-native Full Enrich including titles, building relationships and <code>new_zealand.legal_actions</code> from the certified LINZ 51565 layer.</p><div class="endpoint-meta"><span>AUTH</span><span>NZ</span><span>IDENTITY</span></div></article>
           <article class="endpoint-card"><div class="endpoint-top"><span class="verb">GET</span><code class="endpoint-path">/v1/property/by-location</code></div><p>WGS84 coordinate → parcel/property context with explicit spatial match semantics.</p><div class="endpoint-meta"><span>AUTH</span><span>NZ</span><span>SPATIAL</span></div></article>
           <article class="endpoint-card"><div class="endpoint-top"><span class="verb">GET</span><code class="endpoint-path">/v1/property/by-location/coverage-check</code></div><p>Probe coordinate coverage before relying on a property-by-location workflow.</p><div class="endpoint-meta"><span>AUTH</span><span>COVERAGE</span></div></article>
           <article class="endpoint-card"><div class="endpoint-top"><span class="verb">GET</span><code class="endpoint-path">/v1/countries</code></div><p>Discover the country-aware framework and supported market capabilities.</p><div class="endpoint-meta"><span>GLOBAL</span><span>CAPABILITIES</span></div></article>
@@ -167,12 +170,13 @@ PROPDATA_API_BASE=https://propdata-api-worker.sales-fd3.workers.dev</pre></div>
       <section class="doc-section" id="full-enrich">
         <div class="doc-kicker">Deep country response</div><h2>Full Enrich connects the graph.</h2>
         <div class="status-line"><span class="status-pill">PRODUCTION</span><span class="status-pill graph">LAYER-SPECIFIC</span></div>
-        <p>New Zealand Full Enrich is backed by the same canonical parcel and title identity used by the base resolver, plus country enrichment that can include building relationships and derived physical context. Response exposure is route-, plan- and entitlement-specific.</p>
+        <p>New Zealand Full Enrich is backed by the same canonical parcel and title identity used by the base resolver, then attaches country-native building relationships, derived physical context and the certified LINZ 51565 legal/statutory summary. The legal layer is returned at <code>new_zealand.legal_actions</code> and remains independently fail-open so a downstream legal-layer issue cannot break valid property identity.</p>
         <div class="code-block"><div class="code-head"><span>REQUEST</span><button class="copy-code" type="button">COPY</button></div><pre>GET /v1/property?country=NZ&amp;parcel=3818618&amp;enrich=full</pre></div>
         <div class="layer-grid">
           <article class="layer-card"><span class="layer-no">IDENTITY</span><h3>Parcel + cadastral context</h3><p>Native parcel ID, appellation, land district, area, topology and available geometry.</p></article>
           <article class="layer-card"><span class="layer-no">LEGAL IDENTITY</span><h3>Title graph</h3><p>Property titles plus explicit title↔parcel associations, including multi-title and unit-title contexts.</p></article>
           <article class="layer-card"><span class="layer-no">PHYSICAL</span><h3>Building relationships</h3><p>National building outlines spatially linked to parcels with relationship method, overlap and provenance.</p></article>
+          <article class="layer-card"><span class="layer-no">LEGAL / STATUTORY</span><h3>Live legal actions</h3><p>Certified LINZ 51565 current + historic parcel actions returned directly at <code>new_zealand.legal_actions</code> with counts, bounded items, source revision and coverage state.</p></article>
         </div>
       </section>
 
@@ -242,7 +246,23 @@ PROPDATA_API_BASE=https://propdata-api-worker.sales-fd3.workers.dev</pre></div>
           <article class="legal-card"><div class="status-line"><span class="status-pill">PRODUCTION GRAPH</span></div><h3>342,695 normalized statutory actions</h3><p>LINZ dataset 51565 is loaded nationally and refreshed through a bounded, resumable changeset workflow. Records remain attached to source parcel identity rather than being turned into vague property flags.</p><div class="legal-stat"><div><b>287,865</b><span>Current</span></div><div><b>54,830</b><span>Historic</span></div><div><b>Hourly</b><span>Refresh cadence</span></div></div></article>
           <article class="legal-card dark"><div class="status-line"><span class="status-pill graph">SAFE SUMMARY</span></div><h3>Current vs historic, by action type</h3><p>The country graph can summarize total/current/historic actions and create/extinguished/referenced counts, returning a bounded set of source-aware items without exposing raw ingest payloads.</p><div class="legal-stat"><div><b>197,039</b><span>Create</span></div><div><b>33,816</b><span>Extinguished</span></div><div><b>111,840</b><span>Referenced</span></div></div></article>
         </div>
-        <div class="notice blue"><strong>Exposure note:</strong> statutory actions are a certified production graph layer. Standard public response exposure is still route-, plan- and entitlement-specific; this documentation does not invent a standalone public route that the edge API has not promoted.</div>
+        <div class="notice"><strong>LIVE IN THE PROPERTY API:</strong> statutory actions are now part of the New Zealand property response at <code>new_zealand.legal_actions</code>. Production canary parcel <code>3784245</code> returns <strong>12</strong> certified actions: 2 current, 10 historic, 1 create and 11 referenced. No separate legal-actions endpoint is required.</div>
+        <div class="code-block"><div class="code-head"><span>VERIFIED PUBLIC RESPONSE · PARCEL 3784245</span><button class="copy-code" type="button">COPY</button></div><pre>"new_zealand": {
+  "legal_actions": {
+    "coverage_status": "complete",
+    "count": 12,
+    "current_count": 2,
+    "historic_count": 10,
+    "action_counts": {
+      "create": 1,
+      "extinguished": 0,
+      "referenced": 11
+    },
+    "returned": 12,
+    "truncated": false,
+    "source_dataset_id": "51565"
+  }
+}</pre></div>
       </section>
 
       <section class="doc-section" id="platform">
@@ -292,7 +312,7 @@ PROPDATA_API_BASE=https://propdata-api-worker.sales-fd3.workers.dev</pre></div>
     document.addEventListener('click',function(e){
       var btn=e.target.closest('.copy-code');if(!btn)return;
       var pre=btn.closest('.code-block').querySelector('pre');if(!pre)return;
-      navigator.clipboard.writeText(pre.innerText).then(function(){var old=btn.textContent;btn.textContent='COPIED';setTimeout(function(){btn.textContent=old},1200)});
+      navigator.clipboard.writeText(pre.innerText).then(function(){var old=btn.textContent;btn.textContent=document.documentElement.lang.startsWith('mi')?'KUA TĀRUATIA':'COPIED';setTimeout(function(){btn.textContent=old},1200)});
     });
   </script>
 </body>
