@@ -1,0 +1,120 @@
+name: Promote NZ legal actions contract
+
+on:
+  push:
+    paths:
+      - .github/workflows/promote-nz-legal-actions-docs.yml
+
+permissions:
+  contents: write
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Promote certified 51565 contract
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace_once(text, old, new, label):
+              count = text.count(old)
+              if count != 1:
+                  raise SystemExit(f"{label}: expected exactly 1 match, found {count}")
+              return text.replace(old, new, 1)
+
+          docs_path = Path('docs/index.html')
+          docs = docs_path.read_text(encoding='utf-8')
+
+          docs = replace_once(
+              docs,
+              'Primary property resolver for NZ address or parcel input. Add <code>enrich=full</code> for deeper country-aware enrichment where entitled.',
+              'Primary property resolver for NZ address or parcel input. The NZ property contract now returns country-native Full Enrich including titles, building relationships and <code>new_zealand.legal_actions</code> from the certified LINZ 51565 layer.',
+              'docs endpoint description'
+          )
+
+          docs = replace_once(
+              docs,
+              'New Zealand Full Enrich is backed by the same canonical parcel and title identity used by the base resolver, plus country enrichment that can include building relationships and derived physical context. Response exposure is route-, plan- and entitlement-specific.',
+              'New Zealand Full Enrich is backed by the same canonical parcel and title identity used by the base resolver, then attaches country-native building relationships, derived physical context and the certified LINZ 51565 legal/statutory summary. The legal layer is returned at <code>new_zealand.legal_actions</code> and remains independently fail-open so a downstream legal-layer issue cannot break valid property identity.',
+              'docs Full Enrich description'
+          )
+
+          physical = '<article class="layer-card"><span class="layer-no">PHYSICAL</span><h3>Building relationships</h3><p>National building outlines spatially linked to parcels with relationship method, overlap and provenance.</p></article>'
+          legal_card = physical + '\n          <article class="layer-card"><span class="layer-no">LEGAL / STATUTORY</span><h3>Live legal actions</h3><p>Certified LINZ 51565 current + historic parcel actions returned directly at <code>new_zealand.legal_actions</code> with counts, bounded items, source revision and coverage state.</p></article>'
+          docs = replace_once(docs, physical, legal_card, 'docs legal Full Enrich card')
+
+          stale_notice = '<div class="notice blue"><strong>Exposure note:</strong> statutory actions are a certified production graph layer. Standard public response exposure is still route-, plan- and entitlement-specific; this documentation does not invent a standalone public route that the edge API has not promoted.</div>'
+          live_notice = '''<div class="notice"><strong>LIVE IN THE PROPERTY API:</strong> statutory actions are now part of the New Zealand property response at <code>new_zealand.legal_actions</code>. Production canary parcel <code>3784245</code> returns <strong>12</strong> certified actions: 2 current, 10 historic, 1 create and 11 referenced. No separate legal-actions endpoint is required.</div>
+        <div class="code-block"><div class="code-head"><span>VERIFIED PUBLIC RESPONSE · PARCEL 3784245</span><button class="copy-code" type="button">COPY</button></div><pre>"new_zealand": {
+  "legal_actions": {
+    "coverage_status": "complete",
+    "count": 12,
+    "current_count": 2,
+    "historic_count": 10,
+    "action_counts": {
+      "create": 1,
+      "extinguished": 0,
+      "referenced": 11
+    },
+    "returned": 12,
+    "truncated": false,
+    "source_dataset_id": "51565"
+  }
+}</pre></div>'''
+          docs = replace_once(docs, stale_notice, live_notice, 'docs statutory live notice')
+          docs_path.write_text(docs, encoding='utf-8')
+
+          workspace_path = Path('workspace.html')
+          workspace = workspace_path.read_text(encoding='utf-8')
+
+          workspace = replace_once(
+              workspace,
+              "note:'Resolve an NZ property by parcel or address. Use one identity method at a time.'",
+              "note:'Resolve an NZ property by parcel or address. Full Enrich includes new_zealand.legal_actions from the certified LINZ 51565 layer where covered. Use one identity method at a time.'",
+              'workspace property endpoint note'
+          )
+
+          spatial_quick = '<button class="quick-link" data-preset="location"><span>SPATIAL</span><b>Coordinates → property</b><p>Resolve a WGS84 point into parcel context.</p></button>'
+          legal_quick = spatial_quick + '<button class="quick-link" data-legal-canary><span>LEGAL</span><b>Live statutory actions</b><p>Run parcel 3784245 — 12 certified LINZ 51565 actions.</p></button>'
+          workspace = replace_once(workspace, spatial_quick, legal_quick, 'workspace legal canary shortcut')
+
+          workspace = replace_once(
+              workspace,
+              '<strong>Production layer:</strong> 342,695 parcel statutory actions are nationally loaded and refreshed through bounded, resumable changesets.',
+              '<strong>Live property contract:</strong> 342,695 parcel statutory actions are nationally loaded, refreshed through bounded resumable changesets, and returned through <code>/v1/property</code> at <code>new_zealand.legal_actions</code>.',
+              'workspace legal live contract'
+          )
+
+          init_anchor = "    renderEndpoints();selectEndpoint('property');syncKeyUI();"
+          init_replacement = """    $$('[data-legal-canary]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();selectEndpoint('property');showView('lab');setTimeout(()=>{const parcel=$('[data-param=\"parcel\"]'),address=$('[data-param=\"address\"]'),enrich=$('[data-param=\"enrich\"]');if(parcel)parcel.value='3784245';if(address)address.value='';if(enrich)enrich.value='full';updateUrl()},0)}));
+    renderEndpoints();selectEndpoint('property');syncKeyUI();"""
+          workspace = replace_once(workspace, init_anchor, init_replacement, 'workspace legal canary handler')
+          workspace_path.write_text(workspace, encoding='utf-8')
+
+          print('NZ legal actions docs/workspace promotion: PASS')
+          PY
+
+      - name: Verify promoted contract markers
+        shell: bash
+        run: |
+          grep -F 'new_zealand.legal_actions' docs/index.html >/dev/null
+          grep -F 'VERIFIED PUBLIC RESPONSE · PARCEL 3784245' docs/index.html >/dev/null
+          grep -F 'data-legal-canary' workspace.html >/dev/null
+          grep -F 'Live property contract:' workspace.html >/dev/null
+          echo 'STATIC CONTRACT VERIFY: PASS'
+
+      - name: Commit promoted site contract
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add docs/index.html workspace.html
+          git diff --cached --check
+          git commit -m 'Promote NZ statutory actions into live property contract'
+          git push origin HEAD:main
