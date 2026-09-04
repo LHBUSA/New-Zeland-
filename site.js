@@ -1,16 +1,16 @@
 const META={
   en:{
     title:'New Zealand Property Intelligence API | PropData New Zealand',
-    description:'National New Zealand property intelligence from authoritative Toitū Te Whenua LINZ data: 3.04M primary parcels, 2.42M addresses, 2.45M titles and 3.27M building outlines through one PropData API.',
+    description:'National New Zealand property intelligence from authoritative Toitū Te Whenua LINZ data: 3.04M primary parcels, 2.42M addresses, 2.45M titles, 3.27M building outlines, 3.82M building-parcel relationships and 342,695 parcel statutory actions through one PropData API.',
     ogTitle:'New Zealand Property Intelligence. One API. National Coverage.',
-    ogDescription:'3.04M primary parcels, 2.42M authoritative addresses, 2.45M property titles and 3.27M LINZ building outlines—connected through one source-aware property API.',
+    ogDescription:'National LINZ addresses, parcels, titles, buildings, property relationships and 342,695 parcel statutory actions—connected through one source-aware PropData API.',
     locale:'en_NZ'
   },
   mi:{
     title:'Mōhiotanga Rawa o Aotearoa | PropData New Zealand',
-    description:'He mōhiotanga rawa ā-motu mō Aotearoa mai i ngā raraunga whai mana o Toitū Te Whenua LINZ: 3.04M pānga whenua matua, 2.42M wāhitau, 2.45M taitara me 3.27M tapuwae whare mā tētahi API PropData kotahi.',
+    description:'He mōhiotanga rawa ā-motu mō Aotearoa mai i ngā raraunga whai mana o Toitū Te Whenua LINZ: ngā wāhitau, ngā pānga whenua, ngā taitara, ngā whare, ngā hononga rawa me ngā mahi ā-ture pānga whenua mā tētahi API PropData kotahi.',
     ogTitle:'Mōhiotanga Rawa o Aotearoa. Kotahi te API. Kapi ā-motu.',
-    ogDescription:'3.04M pānga whenua matua, 2.42M wāhitau whai mana, 2.45M taitara rawa me 3.27M tapuwae whare LINZ—kua hono ki tētahi API rawa whai-puna.',
+    ogDescription:'Ngā wāhitau, pānga whenua, taitara, whare, hononga rawa me ngā mahi ā-ture LINZ—kua hono ki tētahi API rawa whai-puna.',
     locale:'mi_NZ'
   }
 };
@@ -18,8 +18,9 @@ const META={
 const FX={NZD_TO_USD:0.584444,USD_TO_NZD:1.71144,asOf:'2 Sep 2026'};
 
 const HOME_TRANSLATIONS={
-  'Addresses → parcels → titles → buildings':'Wāhitau → pānga whenua → taitara → whare',
+  'Addresses → parcels → titles → buildings → statutory intelligence':'Wāhitau → pānga whenua → taitara → whare → mōhiotanga ā-ture',
   'Footprints + capture provenance':'Tapuwae whare + takenga hopunga',
+  'Country-locked API console + coverage':'Papatohu API kua herea ki Aotearoa + kapi',
   'Property products and maps':'Hua rawa me ngā mahere',
   'AI & Agents':'AI me ngā māngai',
   'Structured property identity':'Tuakiri rawa kua whakaraupapatia',
@@ -49,12 +50,12 @@ const HOME_TRANSLATIONS={
   'No invented source facts':'Kāore he meka puna tito',
   'Parcel & Title Intelligence':'Mōhiotanga Pānga Whenua me te Taitara',
   '3.04M primary parcels linked into a 2.45M-title national graph.':'3.04M ngā pānga whenua matua kua hono ki tētahi whatunga ā-motu e 2.45M ngā taitara.',
-  'Building Footprints':'Tapuwae Whare',
-  'LINZ outline geometry with capture and imagery provenance where published.':'Āhuahanga tapuwae LINZ me te takenga hopunga me te whakaahua, ina whakaputaina.',
+  'Building Relationship Graph':'Whatunga Hononga Whare',
+  '3,268,141 LINZ building outlines resolved into 3,820,845 building↔parcel relationships with spatial provenance.':'3,268,141 ngā tapuwae whare LINZ kua whakatauria hei hononga whare↔pānga whenua 3,820,845 me te takenga mokowā.',
   'Coordinate Resolution':'Whakataunga Taunga Wāhi',
   'Latitude/longitude into containing parcel and connected property context.':'Ka whakatauria te ahopae/ahopou ki te pānga whenua me te horopaki rawa e hono ana.',
   'Developer First':'Mō ngā Kaiwhakawhanake',
-  'Production REST, MCP workflows, bulk delivery and custom contracts.':'REST whakaputa, rerengamahi MCP, tukunga raraunga nui me ngā kirimana ritenga.',
+  'Production REST, MCP workflows, country workspace, bulk delivery and custom contracts.':'REST whakaputa, rerengamahi MCP, papamahi whenua, tukunga raraunga nui me ngā kirimana ritenga.',
   'NATIONAL PROPERTY GRAPH':'WHATUNGA RAWA Ā-MOTU',
   'LINZ primary parcels':'Ngā pānga whenua matua LINZ',
   'authoritative addresses':'ngā wāhitau whai mana',
@@ -64,6 +65,13 @@ const HOME_TRANSLATIONS={
   'National building-outline baseline complete':'Kua oti te paparanga tapuwae whare ā-motu',
   'LINZ Building Outlines':'Ngā Tapuwae Whare LINZ',
   'building outlines':'tapuwae whare',
+  'Building ↔ Parcel Relationships':'Ngā Hononga Whare ↔ Pānga Whenua',
+  'National spatial relationship graph complete':'Kua oti te whatunga hononga mokowā ā-motu',
+  'relationship rows':'rārangi hononga',
+  'LINZ Parcel Statutory Actions':'Ngā Mahi ā-Ture Pānga Whenua LINZ',
+  'Current + historic legal/statutory layer':'Paparanga ture o nāianei me ngā mahi o mua',
+  'statutory actions':'mahi ā-ture',
+  'bounded changeset refresh':'whakahou huringa here',
   'COMPLETE':'KUA OTI',
   'national baseline':'paparanga ā-motu',
   'VERIFIED IN THE PRODUCTION GRAPH':'KUA WHAKAMANA I TE WHATUNGA WHAKAPUTA',
@@ -88,22 +96,26 @@ const HOME_TRANSLATIONS={
   'WGS84 latitude/longitude into containing property context.':'Ahopae/ahopou WGS84 ki te horopaki rawa kei roto.',
   'Building outlines':'Ngā tapuwae whare',
   '3,268,141 national LINZ building outlines with capture and imagery provenance preserved where published.':'3,268,141 ngā tapuwae whare LINZ ā-motu, me te takenga hopunga me te whakaahua e tiakina ana ina whakaputaina.',
+  'Building ↔ parcel graph':'Whatunga whare ↔ pānga whenua',
+  '3,820,845 spatial relationships with overlap method, confidence basis and New Zealand metric-CRS provenance.':'3,820,845 ngā hononga mokowā me te tikanga inaki, te pūtake whakawhirinaki me te takenga CRS ine o Aotearoa.',
+  'Statutory intelligence':'Mōhiotanga ā-ture',
+  '342,695 current and historic LINZ/Landonline parcel actions, normalized by parcel with bounded source-aware summaries.':'342,695 ngā mahi pānga whenua LINZ/Landonline o nāianei me ngā mahi o mua, kua whakaraupapatia mā ia pānga whenua me ngā whakarāpopototanga whai-puna kua herea.',
   'BUILT FOR PRODUCT TEAMS':'HE MEA HANGA MŌ NGĀ RŌPŪ HUA',
   'Search, property profiles, parcel-aware workflows and product differentiation.':'Rapu, kōtaha rawa, rerengamahi mōhio-pānga-whenua me te rerekētanga hua.',
   'GIS & Mapping':'GIS me te Mahere',
   'Coordinate resolution, parcel geometry, building footprints and source context.':'Whakataunga taunga wāhi, āhuahanga pānga whenua, tapuwae whare me te horopaki puna.',
   'Structured property identity instead of unverified web-search output.':'Tuakiri rawa kua whakaraupapatia, kaua ko ngā hua rapu tukutuku kāore i whakamana.',
   'Underwriting':'Aromatawai Pūtea',
-  'Traceable title, parcel and property context for internal decision systems.':'Horopaki taitara, pānga whenua me te rawa ka taea te whai mō ngā pūnaha whakatau ā-roto.',
+  'Traceable title, parcel, building and statutory context for internal decision systems.':'Horopaki taitara, pānga whenua, whare me ngā mahi ā-ture ka taea te whai mō ngā pūnaha whakatau ā-roto.',
   'Construction':'Hangahanga',
   'Building footprint context, capture provenance and cadastral relationships.':'Horopaki tapuwae whare, takenga hopunga me ngā hononga cadastral.',
   'Data Platforms':'Ngā Tūāpapa Raraunga',
-  'Skip the national ingestion and reconciliation stack and ship the customer layer.':'Kaua e hanga i te pūnaha uta me te whakatikatika ā-motu; tukuna kē te paparanga kiritaki.',
+  'Skip the national ingestion, relationship building and reconciliation stack and ship the customer layer.':'Kaua e hanga i te pūnaha uta, hononga me te whakatikatika ā-motu; tukuna kē te paparanga kiritaki.',
   'SOURCE TRANSPARENCY':'MĀRAMA KI NGĀ PUNA',
   'PropData is an independent product of PropTechUSA.ai and is not operated by or affiliated with LINZ or the New Zealand government.':'He hua motuhake a PropData nā PropTechUSA.ai, ā, kāore i whakahaerehia, kāore hoki i whai hononga ki LINZ, ki te Kāwanatanga o Aotearoa rānei.',
   'PRIMARY NATIONAL SOURCE':'PUNA MATUA Ā-MOTU',
   'DEVELOPER GEOMETRY':'ĀHUHANGA MŌ NGĀ KAIWHAKAWHANAKE',
-  'BUILDING-LAYER ATTRIBUTION':'TAKENGA PAPARANGA WHARE',
+  'NZ SPATIAL LINKAGE':'HONONGA MOKOWĀ NZ',
   'FAIL-CLOSED':'KATI-HAUMARU',
   'NO INVENTED SOURCE FACTS':'KĀORE HE MEKA PUNA TITO',
   'LIVE STRIPE CHECKOUT · NZD':'STRIPE ORA · UTU NZD',
@@ -123,7 +135,7 @@ const HOME_TRANSLATIONS={
   'Everything in Developer':'Ngā mea katoa o te mahere Kaiwhakawhanake',
   'Production PropTech & GIS use':'Whakamahinga PropTech me GIS whakaputa',
   'Title relationship workflows':'Rerengamahi hononga taitara',
-  'National building-outline layer':'Paparanga tapuwae whare ā-motu',
+  'Building relationship workflows':'Rerengamahi hononga whare',
   'Priority integration support':'Tautoko whakaurunga matua',
   'SCALE':'TAUMATA NUI',
   'High-volume systems':'Ngā pūnaha rōrahi nui',
@@ -143,13 +155,13 @@ const HOME_TRANSLATIONS={
   'Commercial SLA':'SLA arumoni',
   'Multi-country PropData':'PropData whenua-maha',
   'Talk to enterprise sales →':'Kōrero ki te rōpū hoko hinonga →',
-  'Stripe checkout collects billing details and supported tax IDs. API access is provisioned after successful payment; direct API keys remain server-side credentials.':'Ka kohia e Stripe ngā taipitopito nama me ngā ID tāke e tautokona ana. Ka whakaritehia te urunga API i muri i te utu angitu; ka noho tonu ngā kī API tika ki te taha tūmau.',
-  'Choose a plan →':'Kōwhiria he mahere →',
   'Developer docs':'Tuhinga kaiwhakawhanake',
   'A standalone New Zealand property-intelligence product powered by the PropData global property infrastructure.':'He hua mōhiotanga rawa motuhake mō Aotearoa, e whakahaeretia ana e te hanganga rawa ā-ao o PropData.',
   'New Zealand':'Aotearoa',
   'Coverage':'Kapi',
   'Verified property':'Rawa kua whakamana',
+  'Property graph':'Whatunga rawa',
+  'NZ Workspace':'Papamahi NZ',
   'API documentation':'Tuhinga API',
   'Pricing':'Utu',
   'Developers':'Ngā Kaiwhakawhanake',
@@ -159,6 +171,7 @@ const HOME_TRANSLATIONS={
   'Support':'Tautoko',
   'PropData Network':'Whatunga PropData',
   'PropData Platform':'Tūāpapa PropData',
+  'Global Workspace':'Papamahi ā-Ao',
   'Global Coverage':'Kapi ā-Ao',
   'Commercial':'Arumoni',
   'Enterprise':'Hinonga',
@@ -167,43 +180,6 @@ const HOME_TRANSLATIONS={
 
 const ORIGINAL_TEXT=new WeakMap();
 function setMeta(selector,attribute,value){const el=document.querySelector(selector);if(el)el.setAttribute(attribute,value)}
-
-function promoteBuildingBaseline(){
-  if(document.body.classList.contains('docs-body'))return;
-  const heroBuilding=document.querySelector('.hero-metrics > div:nth-child(4)');
-  if(heroBuilding){
-    const value=heroBuilding.querySelector('b');
-    const label=heroBuilding.querySelector('small');
-    if(value)value.textContent='3.27M';
-    if(label){label.dataset.en='Building outlines';label.dataset.mi='Tapuwae whare';label.textContent='Building outlines';}
-  }
-
-  const coverageCopy=document.querySelector('.coverage-section .section-head p');
-  if(coverageCopy){
-    coverageCopy.dataset.en='The national parcel, address, title, title↔parcel and building-outline baselines are complete. PropData now exposes 3,268,141 LINZ building outlines as a completed national source layer, with capture and source provenance preserved where published.';
-    coverageCopy.dataset.mi='Kua oti ngā paparanga ā-motu mō ngā pānga whenua, ngā wāhitau, ngā taitara, ngā hononga taitara↔pānga whenua me ngā tapuwae whare. Kua whakaratohia e PropData he 3,268,141 tapuwae whare LINZ hei paparanga puna ā-motu kua oti, me te takenga hopunga me te puna e tiakina ana ina whakaputaina.';
-    coverageCopy.textContent=coverageCopy.dataset.en;
-  }
-
-  const block=document.querySelector('.building-progress');
-  if(block){
-    block.classList.add('complete');
-    const status=block.querySelector('small');
-    if(status){status.dataset.en='National building-outline baseline complete';status.dataset.mi='Kua oti te paparanga tapuwae whare ā-motu';status.textContent=status.dataset.en;}
-    const nums=block.querySelector('.progress-numbers');
-    if(nums)nums.innerHTML='<b>3,268,141</b><span data-en="building outlines" data-mi="tapuwae whare">building outlines</span><i>·</i><b data-en="COMPLETE" data-mi="KUA OTI">COMPLETE</b><span data-en="national baseline" data-mi="paparanga ā-motu">national baseline</span>';
-  }
-
-  const buildingCard=document.querySelector('.data-cards article:last-child p');
-  if(buildingCard){
-    buildingCard.dataset.en='3,268,141 national LINZ building outlines with capture and imagery provenance preserved where published.';
-    buildingCard.dataset.mi='3,268,141 ngā tapuwae whare LINZ ā-motu, me te takenga hopunga me te whakaahua e tiakina ana ina whakaputaina.';
-    buildingCard.textContent=buildingCard.dataset.en;
-  }
-
-  const builderBuilding=document.querySelector('.pricing-grid .plan.featured ul li:nth-child(4)');
-  if(builderBuilding){builderBuilding.dataset.en='National building-outline layer';builderBuilding.dataset.mi='Paparanga tapuwae whare ā-motu';builderBuilding.textContent=builderBuilding.dataset.en;}
-}
 
 function localizeHomeText(lang){
   if(document.body.classList.contains('docs-body'))return;
@@ -220,20 +196,23 @@ function localizeHomeText(lang){
 
 function setLanguage(lang,{updateUrl=true}={}){
   if(!META[lang])lang='en';
+  const isDocs=document.body.classList.contains('docs-body');
   document.documentElement.lang=lang==='mi'?'mi-NZ':'en-NZ';
   try{localStorage.setItem('propdata_nz_lang',lang)}catch{}
   document.querySelectorAll('[data-en][data-mi]').forEach(el=>{const value=el.dataset[lang];if(value!=null)el.textContent=value});
   localizeHomeText(lang);
   document.querySelectorAll('.lang-btn').forEach(btn=>{const active=btn.dataset.lang===lang;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active))});
-  const meta=META[lang];document.title=meta.title;
-  setMeta('meta[name="description"]','content',meta.description);
-  setMeta('meta[property="og:title"]','content',meta.ogTitle);
-  setMeta('meta[property="og:description"]','content',meta.ogDescription);
-  setMeta('meta[property="og:locale"]','content',meta.locale);
-  setMeta('meta[name="twitter:title"]','content',meta.ogTitle);
-  setMeta('meta[name="twitter:description"]','content',meta.ogDescription);
+  if(!isDocs){
+    const meta=META[lang];document.title=meta.title;
+    setMeta('meta[name="description"]','content',meta.description);
+    setMeta('meta[property="og:title"]','content',meta.ogTitle);
+    setMeta('meta[property="og:description"]','content',meta.ogDescription);
+    setMeta('meta[property="og:locale"]','content',meta.locale);
+    setMeta('meta[name="twitter:title"]','content',meta.ogTitle);
+    setMeta('meta[name="twitter:description"]','content',meta.ogDescription);
+  }
   updateCurrencyUI(currentCurrency,lang);
-  if(updateUrl){const u=new URL(location.href);if(lang==='en')u.searchParams.delete('lang');else u.searchParams.set('lang',lang);history.replaceState({},'',u)}
+  if(updateUrl&&!isDocs){const u=new URL(location.href);if(lang==='en')u.searchParams.delete('lang');else u.searchParams.set('lang',lang);history.replaceState({},'',u)}
 }
 
 function injectCurrencyStyles(){
@@ -265,7 +244,6 @@ function updateCurrencyUI(currency,lang){
   document.querySelectorAll('.site-footer a[href*="buy.stripe.com"]').forEach((link,i)=>{const p=PRICE_PLANS[i];if(!p)return;const name=link.textContent.split('·')[0].trim();link.textContent=currency==='USD'?`${name} · ≈US$${p.usd} (billed NZ$${p.nzd})`:`${name} · NZ$${p.nzd} (≈US$${p.usd})`;});
 }
 
-promoteBuildingBaseline();
 initCurrencyUI();
 document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
 const params=new URLSearchParams(location.search);let storedLang='';try{storedLang=localStorage.getItem('propdata_nz_lang')||''}catch{}const requested=params.get('lang');const preferred=requested&&META[requested]?requested:(storedLang&&META[storedLang]?storedLang:((navigator.language||'').toLowerCase().startsWith('mi')?'mi':'en'));
