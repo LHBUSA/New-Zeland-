@@ -1,4 +1,6 @@
 (()=>{
   const load=(src,done)=>{const s=document.createElement('script');s.src=src;s.async=false;if(done)s.onload=done;document.head.appendChild(s)};
-  load('/site.core.js',()=>load('/product-demo.js'));
+  load('/site.core.js',()=>load('/product-demo.js',()=>{
+    if(location.pathname.startsWith('/docs'))load('/docs-depth.js');
+  }));
 })();
