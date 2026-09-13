@@ -57,13 +57,25 @@
     }
 
     if(path==='/workspace'||path==='/workspace.html'){
-      const intro=document.querySelector('[data-view-panel="overview"] .page-head p');
+      const overview=document.querySelector('[data-view-panel="overview"]');
+      const intro=overview?.querySelector('.page-head p');
       if(intro)intro.textContent='Resolve property identity, inspect the production graph, test country-aware requests and see the full national posture—including restricted title ownership and memorial infrastructure without confusing entitlement-gated layers with default public API access.';
-      const hero=document.querySelector('[data-view-panel="overview"] .hero-copy p');
+      const hero=overview?.querySelector('.hero-copy p');
       if(hero)hero.textContent='Addresses resolve into parcels. Parcels connect to titles, cadastral geometry, buildings and legal/statutory context. Behind that customer-safe surface, the national title-estate, ownership and memorial layers are also loaded as restricted infrastructure. Every layer keeps its own source, coverage and entitlement state underneath one country-aware PropData contract.';
-      const stats=document.querySelector('[data-view-panel="overview"] .stats');
+      const heroPath=overview?.querySelector('.hero-path');
+      if(heroPath)heroPath.textContent='ADDRESS → PARCEL → TITLES → ESTATES → RESTRICTED OWNERSHIP / LEGAL INTERESTS → BUILDINGS → STATUTORY INTELLIGENCE';
+      const stats=overview?.querySelector('.stats');
       if(stats&&!stats.querySelector(`[data-posture="${POSTURE}"]`)){
         [['Title estates','2.81M','Restricted national baseline complete'],['Ownership records','5.73M','Restricted national baseline complete'],['Title memorials','32.86M+','Restricted legal-interest baseline complete'],['Memorial details','1,784,819','Restricted · incremental path live']].forEach(([l,v,s],i)=>stats.appendChild(node(`<div class="stat navy"${i===0?` data-posture="${POSTURE}"`:''}><span>${l}</span><b>${v}</b><small>${s}</small></div>`)));
+      }
+      const graphCard=[...overview?.querySelectorAll('.card')||[]].find(c=>c.querySelector('.card-head strong')?.textContent.trim()==='New Zealand property graph');
+      if(graphCard){
+        const label=graphCard.querySelector('.card-head span');
+        if(label)label.textContent='11 infrastructure layers · 7 customer-safe + 4 restricted';
+        const list=graphCard.querySelector('.layer-list');
+        if(list&&!list.querySelector(`[data-posture="${POSTURE}"]`)){
+          [['TE','Title estates','Restricted title → estate graph','2.81M'],['OW','Ownership records','Restricted estate → ownership graph','5.73M'],['MI','Title memorials','Restricted memorial / legal-interest graph','32.86M+'],['AT','Memorial details','Restricted structured legal-interest details','1.78M']].forEach(([icon,title,desc,count],i)=>list.appendChild(node(`<div class="layer"${i===0?` data-posture="${POSTURE}"`:''}><div class="layer-icon">${icon}</div><div><b>${title}</b><small>${desc}</small></div><div class="layer-count">${count}</div></div>`)));
+        }
       }
       document.querySelectorAll('.notice.warn').forEach(el=>{if(el.textContent.includes('Title Memorial List / 51695:'))el.innerHTML='<strong>Restricted title graph:</strong> national baselines are now complete for title estates (2.81M), ownership records (5.73M), title memorials (32.86M+ baseline records) and structured memorial details (1,784,819). These layers are loaded as PropData infrastructure but remain separately entitlement-gated; they are not represented as default self-serve access.'});
       const coverage=document.querySelector('[data-view-panel="coverage"] .coverage-grid');
