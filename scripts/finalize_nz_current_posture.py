@@ -10,9 +10,9 @@ def apply(path, replacements):
         if new in text:
             continue
         n = text.count(old)
-        if n != 1:
-            raise SystemExit(f"{path} {label}: expected 1 match, got {n}")
-        text = text.replace(old, new, 1)
+        if n < 1:
+            raise SystemExit(f"{path} {label}: expected at least 1 match, got {n}")
+        text = text.replace(old, new)
     p.write_text(text, encoding="utf-8")
 
 
