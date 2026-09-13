@@ -18,11 +18,11 @@
   <meta property="og:locale" content="en_NZ">
   <meta property="og:site_name" content="PropData New Zealand">
   <meta property="og:title" content="PropData New Zealand API Documentation">
-  <meta property="og:description" content="One production contract for New Zealand property identity, parcels, titles, buildings, relationships and statutory intelligence.">
+  <meta property="og:description" content="One production contract for New Zealand property identity, parcels, titles, buildings and statutory intelligence, backed by separately entitlement-gated ownership and legal-interest infrastructure.">
   <meta property="og:url" content="https://nz.proptechusa.ai/docs">
   <meta property="og:image" content="https://images.unsplash.com/photo-1763603341638-e1b6c3804ba9?auto=format&amp;fit=crop&amp;w=1600&amp;q=90">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"PropData New Zealand API Documentation","url":"https://nz.proptechusa.ai/docs","dateModified":"2026-09-04","author":{"@type":"Organization","name":"PropTechUSA.ai","url":"https://proptechusa.ai/"},"about":{"@type":"WebAPI","name":"PropData New Zealand Property Intelligence API","areaServed":{"@type":"Country","name":"New Zealand"}}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"PropData New Zealand API Documentation","url":"https://nz.proptechusa.ai/docs","dateModified":"2026-09-13","author":{"@type":"Organization","name":"PropTechUSA.ai","url":"https://proptechusa.ai/"},"about":{"@type":"WebAPI","name":"PropData New Zealand Property Intelligence API","areaServed":{"@type":"Country","name":"New Zealand"}}}</script>
   <style>
     :root{--docs-nav:260px;--docs-green:#5ee8a8;--docs-aqua:#6bdbff;--docs-night:#04101a;--docs-panel:#071925;--docs-line:#dbe4ea;--docs-ink:#102333;--docs-muted:#657887;--docs-soft:#f4f8fa;--docs-code:#06131f}
     .docs-body{background:#fff;color:var(--docs-ink)}
@@ -71,7 +71,7 @@
       <div>
         <div class="eyebrow"><i></i> PRODUCTION CONTRACT · NEW ZEALAND / AOTEAROA</div>
         <h1>Build on the <em>national property graph.</em></h1>
-        <p>Authoritative address resolution, primary parcels, cadastral geometry, property titles, title↔parcel relationships, building footprints, building↔parcel relationships and parcel statutory intelligence—delivered through the PropData global API with New Zealand-native identifiers and provenance intact.</p>
+        <p>Authoritative address resolution, parcels, titles, buildings and statutory intelligence are delivered through the customer-safe PropData API. Behind that surface, national title-estate, ownership and memorial/legal-interest baselines are complete as separately entitlement-gated infrastructure.</p>
         <div class="docs-actions"><a class="primary" href="/workspace">Launch NZ Workspace →</a><a href="#quickstart">Quick start</a><a href="/#pricing">Get API access</a></div>
       </div>
       <aside class="hero-contract" aria-label="New Zealand API contract">
@@ -193,8 +193,8 @@ PROPDATA_API_BASE=https://propdata-api-worker.sales-fd3.workers.dev</pre></div>
       </section>
 
       <section class="doc-section" id="graph">
-        <div class="doc-kicker">Production country graph</div><h2>Seven national layers, one property identity.</h2>
-        <p>The backend is deliberately richer than a single endpoint table. These are production graph capabilities currently loaded for New Zealand; direct REST exposure remains governed by the public contract above.</p>
+        <div class="doc-kicker">Production country graph</div><h2>Eleven infrastructure layers, one governed property identity.</h2>
+        <p>Seven customer-safe national layers drive the normal product contract. Four deeper title/legal layers are also loaded nationally as restricted infrastructure and remain separately entitlement-controlled rather than being implied as default REST output.</p>
         <div class="layer-grid">
           <article class="layer-card"><span class="layer-no">01</span><h3>Authoritative addresses</h3><p>LINZ address identity, locality structure, lifecycle and coordinates.</p><strong>2,424,415</strong><small>baseline complete</small></article>
           <article class="layer-card"><span class="layer-no">02</span><h3>Primary parcels</h3><p>Parcel identity, cadastral attributes and available geometry.</p><strong>3,040,571</strong><small>baseline complete</small></article>
@@ -203,6 +203,10 @@ PROPDATA_API_BASE=https://propdata-api-worker.sales-fd3.workers.dev</pre></div>
           <article class="layer-card"><span class="layer-no">05</span><h3>Building outlines</h3><p>LINZ footprints with capture and imagery provenance where published.</p><strong>3,268,141</strong><small>baseline complete</small></article>
           <article class="layer-card"><span class="layer-no">06</span><h3>Building ↔ parcel</h3><p>Derived spatial relationships using overlap geometry and New Zealand metric CRS handling.</p><strong>3,820,845</strong><small>relationship graph complete</small></article>
           <article class="layer-card"><span class="layer-no">07</span><h3>Parcel statutory actions</h3><p>Current and historic LINZ/Landonline parcel actions normalized into legal/statutory intelligence.</p><strong>342,695</strong><small>baseline complete · automated refresh</small></article>
+          <article class="layer-card" data-posture="NZ_POSTURE_2026_09_13"><span class="layer-no">08 · RESTRICTED</span><h3>Title estates</h3><p>National title → estate graph maintained behind entitlement controls.</p><strong>2.81M</strong><small>restricted baseline complete</small></article>
+          <article class="layer-card"><span class="layer-no">09 · RESTRICTED</span><h3>Ownership records</h3><p>Estate-linked ownership source records. Counts are not unique people or organisations.</p><strong>5.73M</strong><small>restricted baseline complete</small></article>
+          <article class="layer-card"><span class="layer-no">10 · RESTRICTED</span><h3>Title memorials</h3><p>National memorial/legal-interest graph with source identity preserved.</p><strong>32.86M+</strong><small>restricted baseline complete</small></article>
+          <article class="layer-card"><span class="layer-no">11 · RESTRICTED</span><h3>Structured memorial details</h3><p>Structured legal-interest detail linked back to memorial identity.</p><strong>1,784,819</strong><small>restricted baseline · incremental path live</small></article>
         </div>
       </section>
 
