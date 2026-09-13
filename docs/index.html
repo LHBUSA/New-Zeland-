@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>PropData New Zealand API Docs | Property, Titles, Buildings & Statutory Intelligence</title>
-  <meta name="description" content="Production documentation for PropData New Zealand: 3.04M primary parcels, 2.42M addresses, 2.45M titles, 3.27M building outlines, 3.82M building-parcel relationships and 342,695 LINZ parcel statutory actions.">
+  <title>PropData New Zealand API Docs | Property, Titles, Ownership, Legal Interests & Buildings</title>
+  <meta name="description" content="Production documentation for PropData New Zealand: national address, parcel, title, building and statutory layers plus completed restricted title-estate, ownership and memorial/legal-interest baselines.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
   <meta name="theme-color" content="#04101a">
   <link rel="canonical" href="https://nz.proptechusa.ai/docs">
@@ -91,6 +91,10 @@
     <div class="proof"><b>2,988,279</b><span>Title ↔ parcel</span></div>
     <div class="proof"><b>3,268,141</b><span>Building outlines</span></div>
     <div class="proof"><b>3,820,845</b><span>Building ↔ parcel</span></div>
+    <div class="proof" data-posture="NZ_POSTURE_2026_09_13"><b>2.81M</b><span>Restricted title estates</span></div>
+    <div class="proof"><b>5.73M</b><span>Restricted ownership records</span></div>
+    <div class="proof"><b>32.86M+</b><span>Restricted title memorials</span></div>
+    <div class="proof"><b>1,784,819</b><span>Structured memorial details</span></div>
     <div class="proof"><b>342,695</b><span>Statutory actions</span></div>
   </div></section>
 
@@ -217,7 +221,7 @@ PROPDATA_API_BASE=https://propdata-api-worker.sales-fd3.workers.dev</pre></div>
   "spatial_extents_shared": true,
   "source": "Toitū Te Whenua LINZ"
 }</pre></div>
-        <div class="notice warn"><strong>Named ownership is a separate entitlement problem.</strong> Title metadata and <code>number_owners</code> do not authorize inference of named owner identity. LINZ Personal Data Licence-gated datasets, including the Title Memorial List, remain separately controlled.</div>
+        <div class="notice warn"><strong>Named ownership remains a separate entitlement problem.</strong> PropData maintains the national title-estate and ownership baselines internally, but title metadata and <code>number_owners</code> still do not authorize inference of named owner identity. LINZ Personal Data Licence-gated ownership and memorial datasets remain separately controlled and are not default self-serve output.</div>
       </section>
 
       <section class="doc-section" id="buildings">
@@ -296,7 +300,7 @@ PROPDATA_API_BASE=https://propdata-api-worker.sales-fd3.workers.dev</pre></div>
         <div class="doc-kicker">Source and rights transparency</div><h2>Authoritative sources in. Governed delivery out.</h2>
         <p>Core New Zealand property layers are sourced from Toitū Te Whenua Land Information New Zealand (LINZ). PropData operates the ingestion, normalization, canonical identity, spatial processing, relationship graph, refresh automation, coverage semantics and production delivery above those source systems.</p>
         <div class="status-line"><span class="status-pill">LINZ SOURCE-AWARE</span><span class="status-pill graph">PROPDATA NORMALIZED</span><span class="status-pill restricted">PERSONAL DATA ENTITLEMENTS SEPARATE</span></div>
-        <div class="notice warn"><strong>Title Memorial List / personal data:</strong> restricted LINZ personal-data datasets remain separately entitlement-gated. PropData does not represent those layers as generally available unless the applicable LINZ licence and downstream controls are in place.</div>
+        <div class="notice warn"><strong>Restricted title graph / personal data:</strong> national title-estate, ownership, memorial and structured memorial-detail baselines are complete. Those restricted LINZ datasets remain separately entitlement-gated and are not represented as generally available unless the applicable LINZ licence and downstream controls are in place.</div>
         <p>PropData is an independent product of PropTechUSA.ai and is not operated by or affiliated with LINZ or the New Zealand government.</p>
       </section>
 
