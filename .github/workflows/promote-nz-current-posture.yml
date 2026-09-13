@@ -5,6 +5,7 @@ on:
     paths:
       - .github/workflows/promote-nz-current-posture.yml
       - scripts/promote_nz_current_posture.py
+      - scripts/finalize_nz_current_posture.py
   workflow_dispatch:
 
 permissions:
@@ -19,7 +20,9 @@ jobs:
           fetch-depth: 0
 
       - name: Apply current New Zealand posture
-        run: python3 scripts/promote_nz_current_posture.py
+        run: |
+          python3 scripts/promote_nz_current_posture.py
+          python3 scripts/finalize_nz_current_posture.py
 
       - name: Verify generated site
         run: |
@@ -27,6 +30,8 @@ jobs:
           grep -F 'NZ_POSTURE_2026_09_13' docs/index.html >/dev/null
           grep -F 'NZ_POSTURE_2026_09_13' workspace.html >/dev/null
           grep -F 'NZ_POSTURE_2026_09_13' platform.html >/dev/null
+          grep -F 'Eleven infrastructure layers' docs/index.html >/dev/null
+          grep -F '11 infrastructure layers' workspace.html >/dev/null
           grep -F '32.86M+' index.html >/dev/null
           grep -F '5.73M' workspace.html >/dev/null
           git diff --check
@@ -40,5 +45,5 @@ jobs:
             echo 'No generated changes required.'
             exit 0
           fi
-          git commit -m 'Align NZ static site with completed national graph posture'
+          git commit -m 'Finalize NZ site for completed national graph posture'
           git push origin HEAD:main
